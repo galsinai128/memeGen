@@ -1,9 +1,10 @@
+'use strict';
 var gImgs = [];
 var gImageId = 0;
 
 
 
-function init(){
+function initImgs(){
     gImgs = createImgs();
 }
 
@@ -43,5 +44,11 @@ function createImgs(){
         createImg(['happy','bad','sad']),
         createImg(['freind','funny','toys']),
     ];
+
+    return imgs;
+}
+
+function getImgs(){
+    return gImgs;
 }
 
