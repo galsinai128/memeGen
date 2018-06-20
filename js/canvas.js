@@ -84,8 +84,19 @@ function onCanvasClick(ev) {
 
     if ((x > 10 && x < gBottomTbX) &&
         (y > gTbHeight && y > gBottomTbY)) {
+            document.querySelector('.meme-input-line').value = ' ';
         gPosTxt = gBottomTbY + 35;
     }
+}
+
+function reduceText(){
+    var currFontSize = +ctx.font.substring(0,2);
+    var newFontSize = --currFontSize;
+    ctx.font = `${newFontSize}px Impact`;
+}
+
+function enlargeText(){
+    console.log('+')
 }
 
 

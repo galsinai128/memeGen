@@ -2,19 +2,25 @@
     box-sizing: border-box;
 }
 
-
 @font-face {
     font-family: lato;
     src:url("../fonts/Lato-Regular.ttf");
 }
+@font-face {
+    font-family: Shrikhand;
+    src:url("../fonts/Shrikhand-Regular.ttf");
+}
+
+body {
+    margin:0;
+    font-family: lato, 'Times New Roman', Times, serif;
+}
+
+
 /******************************************************HELPERS**********************************/
 /* tap targets: (finger size)*/
 nav a, button {
 	min-width: 48px;
-<<<<<<< HEAD
-=======
-	/* max-width: 48px; */
->>>>>>> 4d0a81242957662c41634ecd3a897558d1bf0e6e
 } 
 
 /*dont strech my media*/
@@ -59,9 +65,14 @@ img, embed, video, object {
     flex-wrap: wrap;
 }
 
+.non-over-flow {
+    overflow: hidden;
+}
 
 /************************************************END***HELPERS**********************************/
-
+main {
+    padding: 10px;
+}
 .imgs-list{
     display: flex;
     flex-wrap: wrap;
@@ -71,17 +82,29 @@ img, embed, video, object {
 }
 
 .imgs-list li{
+    cursor: pointer;
     max-width: 30%;
 }
 
+.list-item-container {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    margin: 0 0 20px;
+}
+
+
 .modal{
-    height: 100%;
+    height:  calc(100% - 60px);
     width: 100%;
+    top: 60px;
+    padding: 10px;
     position: fixed; 
     z-index: 2;
-    background-color: rgba(0,0,0,0.3);
+    background-color: #404040;
     opacity: 0;
     visibility: hidden;
+    transition:all 0.4s;
 }
 
 .open-modal{
@@ -90,24 +113,77 @@ img, embed, video, object {
 }
 
 .meme-img {
+    margin: 0 20px 0 0;
     width: 60%;
+    max-width: 500px;
     align-items: center;
     flex-direction: column;
 }
 
 
 
-.modal-back-btn{
+.btn{
     width: 100%;
-    height: 20px;
+    height: 30px;
     background-color: #2eb398; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    cursor: pointer;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    transition:all 0.3s;
+}
+.btn:hover,.btn:active {
+    text-shadow: 0 0 3px black;
+    box-shadow: 0 0 7px black;
+}
+.modal-back-btn {
+    margin: 0 0 10px;
+}
+.back-arrow {
+    cursor: pointer;
+    grid-row:1/1;
+    height: 100%;
+    background: #eda11a;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: space-around;
+}
+.canvas{
+    box-shadow: 0 0 9px #1b1a1a;
+    width: 100%;
+    padding: 10px;
+}
+
+.meme-input-line{
+    border:none;
+    border-bottom: 1px solid black;
+    box-shadow: 0 0 1px #1b1a1a;
+    background-color: #bcc0c1;
+    height: 40px;
+    width: 100%;
+    padding: 2px;
+    font-size: 1em;
+}
+
+.control-btn{
+    cursor: pointer;
+    background-color: #6b6b6b;
+    color: white;
+    height: 35px;
+    border: none;
+    box-shadow: 0 0 3px black;
+    transition: all 0.3s;
+}
+
+.control-btn:hover, .control-btn:active {
+    color:black;
+}
+.fonts-btn, .download-btn{
+    width: 100%;
 }
 
 
@@ -115,10 +191,20 @@ img, embed, video, object {
 header {
     background-color: #323232;
 }
+ 
 nav {
     min-height: 60px;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+}
+nav h1 {
+    display: none;
+    margin: 0;
+    font-family: Shrikhand,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2eb398;
+}
+.show {
+    display: block;
 }
 
 .nav-list {

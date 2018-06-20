@@ -10,38 +10,48 @@
 </head>
 
 <body onload="init()">
-    <div class="modal flex">
-        <div  onclick="onCanvasClick(event)" class="meme-img flex">
-            <button class="modal-back-btn flex justify-content-center align-items-center" onclick="closeGen()">Back to gallery</button>
+    <div class="modal flex space-around">
+        <div onclick="onCanvasClick(event)" class="meme-img flex">
+            <div class="btn modal-back-btn" 
+            onclick="closeGen()">
+            <span class="back-arrow flex">⬅</span>
+            <div class="flex align-items-center space-around">Back to gallery</div>
+        </div>
             <canvas class="canvas"></canvas>
         </div>
-        <div class="meme-box-control">
+        <div class="meme-box-control flex flex-dir-col space-between">
             <div class="box-control container">
-                <input type="text" oninput="drawText(event,this)" >
+                <input type="text" class="meme-input-line" oninput="drawText(event,this)" >
                 <ul class="control-btns-list clean-list flex">
                     <li>
-                        <button>B</button>
+                        <button class="control-btn">B</button>
                     </li>
                     <li>
-                        <button>A</button>
+                        <button class="control-btn">A</button>
                     </li>
                     <li>
-                        <button>-</button>
+                        <button class="control-btn" onclick="reduceText()">-</button>
                     </li>
                     <li>
-                        <button>+</button>
+                        <button class="control-btn" onclick="enlargeText()">+</button>
                     </li>
                     <li>
-                        <button>color</button>
+                        <button class="control-btn">color</button>
                     </li>
                 </ul>
-                <button>drop down for fonts</button>
+                <button class="control-btn fonts-btn">drop down for fonts</button>
             </div>
-            <button>download</button>
+            <div class="btn download-btn"
+            onclick="closeGen()">
+            <span class="back-arrow flex">⬅</span>
+            <div class="flex align-items-center space-around">Download</div>
+            </div>
         </div>
     </div>
     <header>
+        
         <nav class="flex">
+                <h1>De Meme Generator</h1>
             <ul class="nav-list clean-list flex">
                 <li>
                     <a class="flex align-items-center">Gallery</a>
