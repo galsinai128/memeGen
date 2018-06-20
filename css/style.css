@@ -12,7 +12,8 @@ nav a, button {
 
 /*dont strech my media*/
 img, embed, video, object {
-	max-width:100%
+    max-width:100%;
+    height: auto;
 }
 
 /* --- list ---*/
@@ -80,3 +81,12 @@ img, embed, video, object {
     opacity: 1;
     visibility: visible;
 }
+
+.meme-img {
+    width: 60%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+

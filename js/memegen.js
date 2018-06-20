@@ -20,6 +20,7 @@ function renderImgs(imgs) {
 function openGen(elPic){
     var elModal = document.querySelector('.modal');
     elModal.classList.add('open-modal');
+    drawImg(elPic);
 }
 
 function closeGen(){
