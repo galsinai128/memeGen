@@ -11,13 +11,13 @@
 
 <body onload="init()">
     <div class="modal flex">
-        <div class="meme-img flex">
+        <div  onclick="onCanvasClick(event)" class="meme-img flex">
             <button class="modal-back-btn flex justify-content-center align-items-center" onclick="closeGen()">Back to gallery</button>
             <canvas class="canvas"></canvas>
         </div>
         <div class="meme-box-control">
             <div class="box-control container">
-                <input type="text" oninput="drawText(event,this.value)">
+                <input type="text" oninput="drawText(event,this)" >
                 <ul class="control-btns-list clean-list flex">
                     <li>
                         <button>B</button>
