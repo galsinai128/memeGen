@@ -3,11 +3,14 @@
 }
 
 
+@font-face {
+    font-family: lato;
+    src:url("../fonts/Lato-Regular.ttf");
+}
 /******************************************************HELPERS**********************************/
 /* tap targets: (finger size)*/
 nav a, button {
 	min-width: 48px;
-	max-width: 48px;
 } 
 
 /*dont strech my media*/
@@ -90,3 +93,34 @@ img, embed, video, object {
 }
 
 
+
+
+
+
+/* Header */
+header {
+    background-color: #323232;
+}
+nav {
+    min-height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-list {
+    color: #ffffff;
+    font-family: lato, 'Times New Roman', Times, serif;
+}
+
+.nav-list a{
+cursor: pointer;
+margin: 0 30px 0;
+font-weight: 700;
+line-height: 6.32px;
+text-transform: uppercase;
+height: 60px;
+}
+
+.nav-list a:hover, .nav-list a:active {
+    color: #2eb398;
+}
