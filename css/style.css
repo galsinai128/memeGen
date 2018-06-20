@@ -11,6 +11,10 @@
 /* tap targets: (finger size)*/
 nav a, button {
 	min-width: 48px;
+<<<<<<< HEAD
+=======
+	/* max-width: 48px; */
+>>>>>>> 4d0a81242957662c41634ecd3a897558d1bf0e6e
 } 
 
 /*dont strech my media*/
@@ -89,12 +93,23 @@ img, embed, video, object {
     width: 60%;
     align-items: center;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 
 
-
+.modal-back-btn{
+    width: 100%;
+    height: 20px;
+    background-color: #2eb398; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 auto;
+}
 
 
 /* Header */
@@ -124,3 +139,5 @@ height: 60px;
 .nav-list a:hover, .nav-list a:active {
     color: #2eb398;
 }
+
+
