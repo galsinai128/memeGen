@@ -12,10 +12,34 @@
 <body onload="init()">
     <div class="modal flex">
         <div class="meme-img flex">
-            <button onclick="closeGen()">Back to gallery</button>
+            <button class="modal-back-btn flex justify-content-center align-items-center" onclick="closeGen()">Back to gallery</button>
             <canvas class="canvas"></canvas>
         </div>
-        <div class="meme-box-control"></div>
+        <div class="meme-box-control">
+            <div class="box-control container">
+
+                <input type="text" oninput="drawText(this.value)">
+                <ul class="control-btns-list clean-list flex">
+                    <li>
+                        <button>B</button>
+                    </li>
+                    <li>
+                        <button>A</button>
+                    </li>
+                    <li>
+                        <button>-</button>
+                    </li>
+                    <li>
+                        <button>+</button>
+                    </li>
+                    <li>
+                        <button>color</button>
+                    </li>
+                </ul>
+                <button>drop down for fonts</button>
+            </div>
+            <button>download</button>
+        </div>
     </div>
     <header>
         <nav>
