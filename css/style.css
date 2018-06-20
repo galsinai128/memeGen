@@ -93,7 +93,6 @@ img, embed, video, object {
     width: 60%;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 
