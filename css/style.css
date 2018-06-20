@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+
+/******************************************************HELPERS**********************************/
+/* tap targets: (finger size)*/
+nav a, button {
+	min-width: 48px;
+	max-width: 48px;
+} 
+
+/*dont strech my media*/
+img, embed, video, object {
+	max-width:100%
+}
+
+/* --- list ---*/
+.clean-list{  /*give this class for the ul*/
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- flex ---*/
+.flex{
+    display: flex;
+}
+
+.flex-dir-col{
+    flex-direction: column;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.space-around{
+    justify-content: space-around;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+
+/************************************************END***HELPERS**********************************/
+
+.imgs-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.imgs-list li{
+    max-width: 30%;
+}
+
+.modal{
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    z-index: 2;
+    background-color: rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.open-modal{
+    opacity: 1;
+    visibility: visible;
+}
