@@ -56,12 +56,17 @@ function getImgs(){
 function createMeme(imgId,txts){
     gMeme =  {
         selectedImgid:imgId,
-        txts: [{
-            line: '',
-            size: 30,
-            align: 'left',
-            color: 'white'
-        }]
+        txts: [createMemeProp()]
+    }
+}
+
+function createMemeProp(posY) {
+    return {
+        line: '',
+        size: 30,
+        align: 'left',
+        color: 'white',
+       coorY:!posY?50:posY
     }
 }
 
