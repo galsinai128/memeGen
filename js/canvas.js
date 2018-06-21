@@ -10,6 +10,9 @@ var gPosTxt;
 var gCurrColorTxt = 'white';
 var gCurrFontStyle = '30px Impact';
 var gCurrTxtAlign = 'left';
+var gtopTxt = null;
+var gBottomTxt = null;
+
 
 function initCanvas() {
     canvas = document.querySelector('.canvas');
@@ -46,14 +49,18 @@ function clearCanvas() {
 }
 
 
-function drawText(ev, elInput) {
-    var inputValue = elInput.value;
+function drawText(ev, elInput, isPropChange) {
+    var inputValue = elInput;
     ctx.font = gCurrFontStyle;
     ctx.textAlign = gCurrTxtAlign;
     ctx.fillStyle = gCurrColorTxt;
+
     if (!gPosTxt) {
         gPosTxt = 50;
+    } else {
+        gBottomTxt = inputValue;
     }
+
     if (ev.inputType === 'deleteContentBackward' && inputValue !== ' ') {
         elInput.value = '';
         clearCanvas();
@@ -61,6 +68,11 @@ function drawText(ev, elInput) {
 
         ctx.fillText(inputValue, 15, gPosTxt, gBottomTbX);
         ctx.strokeText(inputValue, 15, gPosTxt, gBottomTbX);
+        if (isPropChange) {
+
+            ctx.fillText(gBottomTxt, 15, gBottomTbY + 35, gBottomTbX);
+            ctx.strokeText(gBottomTxt, 15, gBottomTbY + 35, gBottomTbX);
+        }
 
     }
 
@@ -77,24 +89,22 @@ function drawRectTotxt() {
 }
 
 function onCanvasClick(ev) {
-    var x;
-    var y;
-    if (ev.pageX || ev.pageY) {
-        x = ev.pageX;
-        y = ev.pageY;
-    }
-    else {
-        x = ev.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-        y = ev.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-    }
-    x -= canvas.offsetLeft;
-    y -= canvas.offsetTop;
-
+    var elInputTxt = document.querySelector('.meme-input-line');
+    var x = ev.layerX;
+    var y = ev.layerY;
     if ((x > 10 && x < gBottomTbX) &&
         (y > gTbHeight && y > gBottomTbY)) {
-        document.querySelector('.meme-input-line').value = ' ';
+        gtopTxt = elInputTxt.value;
+        elInputTxt.value = ' ';
         gPosTxt = gBottomTbY + 35;
+        
+    } else if ((x > 10 && x < gBottomTbX) &&
+        (y > 10 && y < gTbHeight + 20)) {
+        gBottomTxt = elInputTxt.value;
+        // elInputTxt.value = ' ';
+        gPosTxt = 50;
     }
+
 }
 
 function reduceText() {
@@ -115,8 +125,8 @@ function resizeText(isPlus) {
         var newFontSize = --currFontSize;
     }
     gCurrFontStyle = `${newFontSize}px Impact`;
-    var elInput = document.querySelector('.meme-input-line')
-    drawText('', elInput);
+    var elInput = document.querySelector('.meme-input-line');
+    drawText('', elInput.value,true);
 }
 
 function setAlign(elBtn) {
@@ -132,8 +142,8 @@ function setAlign(elBtn) {
             gCurrTxtAlign = 'center'
             break;
     }
-    var elInput = document.querySelector('.meme-input-line')
-    drawText('', elInput);
+    var elInput = document.querySelector('.meme-input-line');
+    drawText('', elInput.value,true);
 }
 
 
@@ -161,5 +171,10 @@ function setAlign(elBtn) {
 
 function colorChange(el) {
     console.log('color', el.value)
-    ctx.fillStyle = el.value;
+    gCurrColorTxt = el.value;
+    var elInputTxt = document.querySelector('.meme-input-line').value;
+    clearCanvas();
+    drawText('', elInputTxt, true)
+
+
 }
