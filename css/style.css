@@ -190,6 +190,24 @@ main {
 /* Header */
 header {
     background-color: #323232;
+    margin: 0 0 20px 0;
+}
+
+.hedaer-decoration {
+    position: absolute;
+    top:0;
+    left:50%;
+    z-index: -1;
+}
+.hedaer-decoration img {
+    height: 80px;
+}
+
+.show {
+    display: block;
+}
+.hide {
+    display: none;
 }
  
 nav {
@@ -203,13 +221,14 @@ nav h1 {
     font-family: Shrikhand,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #2eb398;
 }
-.show {
-    display: block;
-}
+
 
 .nav-list {
     color: #ffffff;
     font-family: lato, 'Times New Roman', Times, serif;
+}
+.nav-list li {
+    position: relative;
 }
 
 .nav-list a{

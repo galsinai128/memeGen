@@ -21,6 +21,7 @@ function openGen(elPic){
     var elModal = document.querySelector('.modal');
     document.querySelector('nav h1').classList.add('show')
     document.querySelector('body').classList.add('non-over-flow');
+    document.querySelector('.hedaer-decoration').classList.add('hide');
     elModal.classList.add('open-modal');
 
     drawImg(elPic);
@@ -31,6 +32,7 @@ function closeGen(){
     var elModal = document.querySelector('.modal');
     elModal.classList.remove('open-modal');
     document.querySelector('nav h1').classList.remove('show')
+    document.querySelector('.hedaer-decoration').classList.remove('hide');
     document.querySelector('body').classList.remove('non-over-flow');
 
 }
