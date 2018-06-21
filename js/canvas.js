@@ -7,6 +7,9 @@ var gBottomTbY;
 var gBottomTbX;
 var gTbHeight = 50;
 var gPosTxt;
+var gCurrColorTxt = 'white';
+var gCurrFontStyle = '30px Impact';
+var gCurrTxtAlign = 'left';
 
 function initCanvas() {
     canvas = document.querySelector('.canvas');
@@ -39,9 +42,9 @@ function drawImg(imgUrl) {
 
 function drawText(ev, elInput) {
     var inputValue = elInput.value;
-    ctx.font = "30px Impact";
-    ctx.textAlign = "left";
-    ctx.fillStyle = "white";
+    ctx.font = gCurrFontStyle;
+    ctx.textAlign = gCurrTxtAlign;
+    ctx.fillStyle = gCurrColorTxt;
     if (!gPosTxt) {
         gPosTxt = 50;
     }
@@ -100,3 +103,31 @@ function enlargeText(){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function colorChange(el) {
+    console.log('color',el.value)
+    ctx.fillStyle = el.value;
+}
