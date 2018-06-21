@@ -152,6 +152,16 @@ main {
     align-items: center;
     justify-content: space-around;
 }
+.download-btn a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+}
+
+
 .canvas{
     box-shadow: 0 0 9px #1b1a1a;
     width: 100%;

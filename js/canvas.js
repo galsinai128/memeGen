@@ -47,11 +47,9 @@ function drawImg(imgUrl) {
         img.src = imgUrl.src;
         img.onload = function () {
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            drawRectTotxt();
         }
     } else {
         ctx.drawImage(currImg, 0, 0, canvas.width, canvas.height);
-        drawRectTotxt();
     }
 }
 
@@ -64,7 +62,8 @@ function drawText(ev, txtStr) {
     var elInputTxt = document.querySelector('.meme-input-line');
     elInputTxt.maxLength = gBottomTbX;
 
-    gMeme.txts[0].line = txtStr;
+    gMeme.txts[gCurrLineIdx].line = txtStr;
+
     var currTxtWidth = ctx.measureText(txtStr).width;
 
     if (ev.inputType === 'deleteContentBackward' && txtStr !== ' ') {
@@ -96,38 +95,42 @@ function drawText(ev, txtStr) {
 }
 
 function renderText(inputValue, alignXForCanvas) {
-    
-    for (var i = 0; i <gMeme.txts.length; i++ ) {
+
+    for (var i = 0; i < gMeme.txts.length; i++) {
         var currLine = gMeme.txts[i];
         ctx.fillText(currLine.line, alignXForCanvas, currLine.coorY);
         ctx.strokeText(currLine.line, alignXForCanvas, currLine.coorY);
     }
-    
+
 }
 
-function drawRectTotxt() {
-    //first textbox
-    // ctx.strokeRect(10, 10, gBottomTbX, gTbHeight);
+function addNewLine() {
+    var elInputTxt = document.querySelector('.meme-input-line');
 
-    //second textbox
-    // ctx.strokeRect(10, gBottomTbY, gBottomTbX, gTbHeight);
+    var currMemePosY = gMeme.txts[gCurrLineIdx].coorY;
+
+    if (gMeme.txts.length < 3) {
+        gMeme.txts.push(createMemeProp(currMemePosY + 80));
+        var idx = gMeme.txts.length - 1;
+
+        elInputTxt.value = gMeme.txts[idx].line;
+        gMeme.txts[idx].line = elInputTxt.value;
+        gCurrLineIdx = idx;
+    }
 }
+
 
 function onCanvasClick(ev) {
     var elInputTxt = document.querySelector('.meme-input-line');
-    var currMemePosY = gMeme.txts[0].coorY;
+    var currMemePosY = gMeme.txts[gCurrLineIdx].coorY;
     var x = ev.layerX;
     var y = ev.layerY;
 
-    if(y > currMemePosY + 50) { 
-        if (gMeme.txts.length < 2) {
-            gMeme.txts.push(createMemeProp(y - 80));
-
-        }
+    if (gMeme.txts.length === 1 && elInputTxt.value === ' ') {
+        return;
     }
 
-
-
+   
     // if ((x > 10 && x < gBottomTbX) &&
     //     (y > gTbHeight && y > gBottomTbY)) {
     //     gtopTxt = elInputTxt.value;
@@ -140,6 +143,21 @@ function onCanvasClick(ev) {
     //     elInputTxt.value = gtopTxt;
     //     gPosTxt = 50;
     // }
+
+}
+
+
+function toggleLine() {
+    var elInputTxt = document.querySelector('.meme-input-line');
+
+    gCurrLineIdx = (gCurrLineIdx + 1)%gMeme.txts.length ;
+ 
+    elInputTxt.value = gMeme.txts[gCurrLineIdx].line;
+    gMeme.txts[gCurrLineIdx].line += elInputTxt.value
+
+}
+
+function findLineIdx(coor) {
 
 }
 
@@ -182,10 +200,17 @@ function setAlign(elBtn) {
 }
 
 
-
 function colorChange(el) {
     var currMeme = gMeme.txts[0];
     currMeme.color = el.value;
     clearCanvas();
     drawText('', currMeme.line)
 }
+
+function downloadImg(elLink) {
+    var currImgId = gMeme.selectedImgid;
+    elLink.download = `img/${currImgId}.jpg`;
+    var imgContent = canvas.toDataURL('image/jpeg');
+    elLink.href = imgContent;
+}
+
