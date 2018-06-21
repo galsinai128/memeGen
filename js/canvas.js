@@ -136,10 +136,11 @@ function setAlign(elBtn) {
             gCurrTxtAlign = 'left'
             break;
         case 'C':
-            gCurrTxtAlign = 'right'
+            gCurrTxtAlign = 'center'
+            gPosTxt = canvas.width/2;
             break;
         case 'R':
-            gCurrTxtAlign = 'center'
+            gCurrTxtAlign = 'right'
             break;
     }
     var elInput = document.querySelector('.meme-input-line');
