@@ -24,10 +24,10 @@
                 <input type="text" class="meme-input-line" oninput="drawText(event,this.value)" >
                 <ul class="control-btns-list clean-list flex justify-content-center">
                     <li class="control-btn-item">
-                        <div class="control-btn">B</div>
+                        <div class="control-btn flex align-items-center space-around">B</div>
                     </li>
                     <li class="control-btn-item">
-                        <div onclick="displayAlignMenu()" class="control-btn">A
+                        <div onclick="displayAlignMenu()" class="control-btn flex align-items-center space-around">A
                             <ul class="align-menu clean-list">
                                 <li><button onclick="setAlign(this.innerText)" class="control-btn">L</button></li>
                                 <li><button onclick="setAlign(this.innerText)" class="control-btn">C</button></li>
@@ -36,10 +36,10 @@
                         </div>
                     </li>
                     <li class="control-btn-item">
-                        <div class="control-btn" onclick="reduceText()">-</div>
+                        <div class="control-btn flex align-items-center space-around" onclick="reduceText()">-</div>
                     </li>
                     <li class="control-btn-item">
-                        <div class="control-btn" onclick="enlargeText()">+</div>
+                        <div class="control-btn flex align-items-center space-around" onclick="enlargeText()">+</div>
                     </li>
                     <li class="control-btn-item">
                             <input class="control-btn" oninput="colorChange(this)"  type="color" id="txtColor">

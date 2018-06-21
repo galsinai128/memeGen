@@ -11,7 +11,7 @@ function renderImgs(imgs) {
     var elUlImgs = document.querySelector('.imgs-list');
     var strHtml = '';
     imgs.forEach(function (img) {
-        strHtml += `<li><div class="list-item-container"><img src="${img.url}" onclick="openGen(this)" alt="No Pciture to displaye"></div></li>`
+        strHtml += `<li><div class="list-item-container"><img id="${img.url}" src="${img.url}" onclick="openGen(this)" alt="No Pciture to displaye"></div></li>`
     });
     elUlImgs.innerHTML = strHtml;
 
@@ -24,6 +24,8 @@ function openGen(elPic){
     document.querySelector('.hedaer-decoration').classList.add('hide');
     elModal.classList.add('open-modal');
 
+   var imgObj =  findImg(elPic);
+   createMeme(imgObj.id);
     drawImg(elPic);
 
 }

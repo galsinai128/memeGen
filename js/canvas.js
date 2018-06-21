@@ -10,8 +10,8 @@ var gPosTxt;
 var gCurrColorTxt = 'white';
 var gCurrFontStyle = '30px Impact';
 var gCurrTxtAlign = 'left';
-var gtopTxt = null;
-var gBottomTxt = null;
+var gtopTxt = ' ';
+var gBottomTxt = ' ';
 
 
 function initCanvas() {
@@ -50,6 +50,7 @@ function clearCanvas() {
 
 
 function drawText(ev, elInput, isPropChange) {
+    var elInputTxt = document.querySelector('.meme-input-line');
     var inputValue = elInput;
     ctx.font = gCurrFontStyle;
     ctx.textAlign = gCurrTxtAlign;
@@ -57,17 +58,18 @@ function drawText(ev, elInput, isPropChange) {
 
     if (!gPosTxt) {
         gPosTxt = 50;
-    } else {
-        gBottomTxt = inputValue;
     }
 
     if (ev.inputType === 'deleteContentBackward' && inputValue !== ' ') {
-        elInput.value = '';
+        elInputTxt.value = '';
+        gtopTxt = ' ';
+        gBottomTxt = ' ';
         clearCanvas();
     } else {
 
         ctx.fillText(inputValue, 15, gPosTxt, gBottomTbX);
         ctx.strokeText(inputValue, 15, gPosTxt, gBottomTbX);
+
         if (isPropChange) {
 
             ctx.fillText(gBottomTxt, 15, gBottomTbY + 35, gBottomTbX);
@@ -95,13 +97,13 @@ function onCanvasClick(ev) {
     if ((x > 10 && x < gBottomTbX) &&
         (y > gTbHeight && y > gBottomTbY)) {
         gtopTxt = elInputTxt.value;
-        elInputTxt.value = ' ';
+        elInputTxt.value = gBottomTxt;
         gPosTxt = gBottomTbY + 35;
-        
+
     } else if ((x > 10 && x < gBottomTbX) &&
         (y > 10 && y < gTbHeight + 20)) {
         gBottomTxt = elInputTxt.value;
-        // elInputTxt.value = ' ';
+        elInputTxt.value = gtopTxt;
         gPosTxt = 50;
     }
 
@@ -126,7 +128,7 @@ function resizeText(isPlus) {
     }
     gCurrFontStyle = `${newFontSize}px Impact`;
     var elInput = document.querySelector('.meme-input-line');
-    drawText('', elInput.value,true);
+    drawText('', elInput.value, true);
 }
 
 function setAlign(elBtn) {
@@ -144,7 +146,7 @@ function setAlign(elBtn) {
             break;
     }
     var elInput = document.querySelector('.meme-input-line');
-    drawText('', elInput.value,true);
+    drawText('', elInput.value, true);
 }
 
 

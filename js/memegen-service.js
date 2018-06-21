@@ -1,6 +1,7 @@
 'use strict';
 var gImgs = [];
 var gImageId = 0;
+var gMemes = {};
 
 
 
@@ -50,5 +51,20 @@ function createImgs(){
 
 function getImgs(){
     return gImgs;
+}
+
+function createMeme(imgId,txts){
+    gMemes =  {
+        selectedImgid:imgId,
+        props:[txts]
+    }
+}
+
+function findImg(img) {
+ var objImg = gImgs.find(function(item){
+        return (item.url === img.id)
+    });
+    console.log(objImg);
+    return objImg;
 }
 
