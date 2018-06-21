@@ -92,7 +92,9 @@ function onCanvasClick(ev) {
 function reduceText(){
     var currFontSize = +ctx.font.substring(0,2);
     var newFontSize = --currFontSize;
+    console.log('ctx.font',ctx.font)
     ctx.font = `${newFontSize}px Impact`;
+    console.log('ctx.font',ctx.font)
 }
 
 function enlargeText(){
