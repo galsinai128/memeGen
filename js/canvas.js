@@ -11,13 +11,15 @@ var gPosTxt;
 var LEFT;
 var CENTER;
 var RIGHT;
+var gCurrLineIdx = 0;
 
 function initCanvas() {
+
     canvas = document.querySelector('.canvas');
     ctx = canvas.getContext('2d');
     canvas.width = 350;
     canvas.height = 350;
-    var currLine = gMeme.txts[0];
+    var currLine = gMeme.txts[gCurrLineIdx];
     ctx.font = `${currLine.size}px Impact`;
     ctx.textAlign = currLine.align;
     ctx.fillStyle = currLine.color;
@@ -94,10 +96,13 @@ function drawText(ev, txtStr) {
 }
 
 function renderText(inputValue, alignXForCanvas) {
-
-    ctx.fillText(inputValue, alignXForCanvas, 50);
-    ctx.strokeText(inputValue, alignXForCanvas, 50);
-
+    
+    for (var i = 0; i <gMeme.txts.length; i++ ) {
+        var currLine = gMeme.txts[i];
+        ctx.fillText(currLine.line, alignXForCanvas, currLine.coorY);
+        ctx.strokeText(currLine.line, alignXForCanvas, currLine.coorY);
+    }
+    
 }
 
 function drawRectTotxt() {
@@ -110,20 +115,31 @@ function drawRectTotxt() {
 
 function onCanvasClick(ev) {
     var elInputTxt = document.querySelector('.meme-input-line');
+    var currMemePosY = gMeme.txts[0].coorY;
     var x = ev.layerX;
     var y = ev.layerY;
-    if ((x > 10 && x < gBottomTbX) &&
-        (y > gTbHeight && y > gBottomTbY)) {
-        gtopTxt = elInputTxt.value;
-        elInputTxt.value = gBottomTxt;
-        gPosTxt = gBottomTbY + 35;
 
-    } else if ((x > 10 && x < gBottomTbX) &&
-        (y > 10 && y < gTbHeight + 20)) {
-        gBottomTxt = elInputTxt.value;
-        elInputTxt.value = gtopTxt;
-        gPosTxt = 50;
+    if(y > currMemePosY + 50) { 
+        if (gMeme.txts.length < 2) {
+            gMeme.txts.push(createMemeProp(y - 80));
+
+        }
     }
+
+
+
+    // if ((x > 10 && x < gBottomTbX) &&
+    //     (y > gTbHeight && y > gBottomTbY)) {
+    //     gtopTxt = elInputTxt.value;
+    //     elInputTxt.value = gBottomTxt;
+    //     gPosTxt = gBottomTbY + 35;
+
+    // } else if ((x > 10 && x < gBottomTbX) &&
+    //     (y > 10 && y < gTbHeight + 20)) {
+    //     gBottomTxt = elInputTxt.value;
+    //     elInputTxt.value = gtopTxt;
+    //     gPosTxt = 50;
+    // }
 
 }
 
