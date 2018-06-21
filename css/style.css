@@ -262,3 +262,10 @@ height: 60px;
     display: block;
 }
 
+.filter-search{
+    margin: 0.5rem;
+    width: 30%;
+    height: 40px;
+    text-align: center;
+}
+

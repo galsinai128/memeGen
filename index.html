@@ -12,16 +12,15 @@
 <body onload="init()">
     <div class="modal flex space-around">
         <div onclick="onCanvasClick(event)" class="meme-img flex">
-            <div class="btn modal-back-btn" 
-            onclick="closeGen()">
-            <span class="back-arrow flex">⬅</span>
-            <div class="flex align-items-center space-around">Back to gallery</div>
-        </div>
+            <div class="btn modal-back-btn" onclick="closeGen()">
+                <span class="back-arrow flex">⬅</span>
+                <div class="flex align-items-center space-around">Back to gallery</div>
+            </div>
             <canvas class="canvas"></canvas>
         </div>
         <div class="meme-box-control flex flex-dir-col space-between">
             <div class="box-control container">
-                <input type="text" class="meme-input-line" oninput="drawText(event,this.value)" >
+                <input type="text" class="meme-input-line" oninput="drawText(event,this.value)">
                 <ul class="control-btns-list clean-list flex justify-content-center">
                     <li class="control-btn-item">
                         <div class="control-btn flex align-items-center space-around">B</div>
@@ -29,9 +28,15 @@
                     <li class="control-btn-item">
                         <div onclick="displayAlignMenu()" class="control-btn flex align-items-center space-around">A
                             <ul class="align-menu clean-list">
-                                <li><button onclick="setAlign(this.innerText)" class="control-btn">L</button></li>
-                                <li><button onclick="setAlign(this.innerText)" class="control-btn">C</button></li>
-                                <li><button onclick="setAlign(this.innerText)" class="control-btn">R</button></li>
+                                <li>
+                                    <button onclick="setAlign(this.innerText)" class="control-btn">L</button>
+                                </li>
+                                <li>
+                                    <button onclick="setAlign(this.innerText)" class="control-btn">C</button>
+                                </li>
+                                <li>
+                                    <button onclick="setAlign(this.innerText)" class="control-btn">R</button>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -42,33 +47,32 @@
                         <div class="control-btn flex align-items-center space-around" onclick="enlargeText()">+</div>
                     </li>
                     <li class="control-btn-item">
-                            <input class="control-btn" oninput="colorChange(this)"  type="color" id="txtColor">
+                        <input class="control-btn" oninput="colorChange(this)" type="color" id="txtColor">
                     </li>
                 </ul>
                 <button class="control-btn fonts-btn">drop down for fonts</button>
             </div>
-            <div class="btn download-btn"
-            onclick="closeGen()">
-            <span class="back-arrow flex">⬅</span>
-            <div class="flex align-items-center space-around">Download</div>
+            <div class="btn download-btn" onclick="closeGen()">
+                <span class="back-arrow flex">⬅</span>
+                <div class="flex align-items-center space-around">Download</div>
             </div>
         </div>
     </div>
     <header>
-        
+
         <nav class="flex">
-                <h1>De Meme Generator</h1>
+            <h1>De Meme Generator</h1>
             <ul class="nav-list clean-list flex">
                 <li>
                     <a class="flex align-items-center">Gallery</a>
-                    
+
                 </li>
-                
+
                 <li>
                     <a class="flex align-items-center">About</a>
                     <div class="hedaer-decoration">
-                            <img src="img/other/hex.png"/>
-                    </div> 
+                        <img src="img/other/hex.png" />
+                    </div>
                 </li>
                 <li>
                     <a class="flex align-items-center">Get in touch</a>
@@ -76,7 +80,16 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="flex flex-dir-col justify-content-center align-items-center">
+        <input class="filter-search" type="text" value: "filter" placeholder="filter by keywords" list="keywords">
+        <datalist id="keywords">
+            <!-- <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari"> -->
+        </datalist>
+        <input type="submit">
         <ul id="img-gallery" class="imgs-list clean-list">
 
         </ul>
