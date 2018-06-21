@@ -2,11 +2,14 @@
 var gImgs = [];
 var gImageId = 0;
 var gMeme = {};
+var gKeywordMap = {};
+var gPopularKeywordMap = {};
 
 
 
 function initImgs(){
     gImgs = createImgs();
+    mapImagesKeyWords();
 }
 
 function createImg(keywords){
@@ -76,5 +79,29 @@ function findImg(img) {
     });
     console.log(objImg);
     return objImg;
+}
+
+
+//set fake data for local storage
+function mapImagesKeyWords(){
+    for (var i = 0 ; i < gImgs.length; i++){
+        for (var j = 0; j < gImgs[i].keywords.length; j++){
+            var currKey = gImgs[i].keywords[j];
+            if (!gKeywordMap[currKey]) gKeywordMap[currKey] = 1; 
+            else gKeywordMap[currKey]++
+        }
+    }
+    gPopularKeywordMap = gKeywordMap;
+    saveToStorage('popular-keys',gPopularKeywordMap);
+}
+
+
+
+function saveToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value))
+}
+
+function loadFromStorage(key) {
+    return JSON.parse(localStorage.getItem(key))
 }
 

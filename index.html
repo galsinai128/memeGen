@@ -81,15 +81,16 @@
         </nav>
     </header>
     <main class="flex flex-dir-col justify-content-center align-items-center">
-        <input class="filter-search" type="text" value: "filter" placeholder="filter by keywords" list="keywords">
-        <datalist id="keywords">
-            <!-- <option value="Internet Explorer">
-            <option value="Firefox">
-            <option value="Chrome">
-            <option value="Opera">
-            <option value="Safari"> -->
-        </datalist>
-        <input type="submit">
+        <div class="filter-container">
+            <ul class="popular-searches clean-list flex space-around align-items-center">
+
+            </ul>
+            <input onchange="filterImagesList()" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
+            <datalist id="keywords">
+                
+            </datalist>
+            <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
+        </div>
         <ul id="img-gallery" class="imgs-list clean-list">
 
         </ul>
