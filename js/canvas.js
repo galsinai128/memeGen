@@ -189,3 +189,11 @@ function colorChange(el) {
     clearCanvas();
     drawText('', currMeme.line)
 }
+
+function downloadImg(elLink) {
+    var currImgId = gMeme.selectedImgid;
+    elLink.download = `img/${currImgId}.jpg`;
+    var imgContent = canvas.toDataURL('image/jpeg');
+    elLink.href = imgContent;
+}
+
