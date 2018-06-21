@@ -169,6 +169,13 @@ main {
     font-size: 1em;
 }
 
+.control-btns-list{
+    width: 100%;
+}
+.control-btn-item{
+    width: 100%;
+}
+
 .control-btn{
     cursor: pointer;
     background-color: #6b6b6b;
@@ -177,6 +184,8 @@ main {
     border: none;
     box-shadow: 0 0 3px black;
     transition: all 0.3s;
+    width: 100%;
+    text-align: center;
 }
 
 .control-btn:hover, .control-btn:active {
@@ -244,4 +253,12 @@ height: 60px;
     color: #2eb398;
 }
 
+
+.align-menu{
+    display: none;
+    position: absolute;}
+
+.display-block{
+    display: block;
+}
 

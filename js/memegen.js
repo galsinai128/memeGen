@@ -36,3 +36,8 @@ function closeGen(){
     document.querySelector('body').classList.remove('non-over-flow');
 
 }
+
+function displayAlignMenu(){
+    var elAlignMenu = document.querySelector('.align-menu');
+    elAlignMenu.classList.toggle('display-block');
+}

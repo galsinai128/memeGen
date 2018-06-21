@@ -40,6 +40,12 @@ function drawImg(imgUrl) {
     }
 }
 
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawImg(currImg);
+}
+
+
 function drawText(ev, elInput) {
     var inputValue = elInput.value;
     ctx.font = gCurrFontStyle;
@@ -50,8 +56,7 @@ function drawText(ev, elInput) {
     }
     if (ev.inputType === 'deleteContentBackward' && inputValue !== ' ') {
         elInput.value = '';
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawImg(currImg);
+        clearCanvas();
     } else {
 
         ctx.fillText(inputValue, 15, gPosTxt, gBottomTbX);
@@ -87,24 +92,49 @@ function onCanvasClick(ev) {
 
     if ((x > 10 && x < gBottomTbX) &&
         (y > gTbHeight && y > gBottomTbY)) {
-            document.querySelector('.meme-input-line').value = ' ';
+        document.querySelector('.meme-input-line').value = ' ';
         gPosTxt = gBottomTbY + 35;
     }
 }
 
-function reduceText(){
-    var currFontSize = +ctx.font.substring(0,2);
-    var newFontSize = --currFontSize;
-    console.log('ctx.font',ctx.font)
-    ctx.font = `${newFontSize}px Impact`;
-    console.log('ctx.font',ctx.font)
+function reduceText() {
+    resizeText(false);
 }
 
-function enlargeText(){
-    console.log('+')
+function enlargeText() {
+    resizeText(true);
 }
 
+function resizeText(isPlus) {
+    clearCanvas();
+    var currFontSize = gCurrFontStyle.substring(0, 2);
+    if (isPlus) {
+        var newFontSize = ++currFontSize;
+    }
+    else {
+        var newFontSize = --currFontSize;
+    }
+    gCurrFontStyle = `${newFontSize}px Impact`;
+    var elInput = document.querySelector('.meme-input-line')
+    drawText('', elInput);
+}
 
+function setAlign(elBtn) {
+    clearCanvas();
+    switch (elBtn) {
+        case 'L':
+            gCurrTxtAlign = 'left'
+            break;
+        case 'C':
+            gCurrTxtAlign = 'right'
+            break;
+        case 'R':
+            gCurrTxtAlign = 'center'
+            break;
+    }
+    var elInput = document.querySelector('.meme-input-line')
+    drawText('', elInput);
+}
 
 
 
@@ -130,6 +160,6 @@ function enlargeText(){
 
 
 function colorChange(el) {
-    console.log('color',el.value)
+    console.log('color', el.value)
     ctx.fillStyle = el.value;
 }

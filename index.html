@@ -22,20 +22,26 @@
         <div class="meme-box-control flex flex-dir-col space-between">
             <div class="box-control container">
                 <input type="text" class="meme-input-line" oninput="drawText(event,this)" >
-                <ul class="control-btns-list clean-list flex">
-                    <li>
-                        <button class="control-btn">B</button>
+                <ul class="control-btns-list clean-list flex justify-content-center">
+                    <li class="control-btn-item">
+                        <div class="control-btn">B</div>
                     </li>
-                    <li>
-                        <button class="control-btn">A</button>
+                    <li class="control-btn-item">
+                        <div onclick="displayAlignMenu()" class="control-btn">A
+                            <ul class="align-menu clean-list">
+                                <li><button onclick="setAlign(this.innerText)" class="control-btn">L</button></li>
+                                <li><button onclick="setAlign(this.innerText)" class="control-btn">C</button></li>
+                                <li><button onclick="setAlign(this.innerText)" class="control-btn">R</button></li>
+                            </ul>
+                        </div>
                     </li>
-                    <li>
-                        <button class="control-btn" onclick="reduceText()">-</button>
+                    <li class="control-btn-item">
+                        <div class="control-btn" onclick="reduceText()">-</div>
                     </li>
-                    <li>
-                        <button class="control-btn" onclick="enlargeText()">+</button>
+                    <li class="control-btn-item">
+                        <div class="control-btn" onclick="enlargeText()">+</div>
                     </li>
-                    <li>
+                    <li class="control-btn-item">
                             <input class="control-btn" oninput="colorChange(this)"  type="color" id="txtColor">
                     </li>
                 </ul>
