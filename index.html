@@ -51,12 +51,30 @@
                     </li>
                 </ul>
                 <button class="control-btn fonts-btn">drop down for fonts</button>
+                <ul class="control-btns-list clean-list flex justify-content-center">
+                    <li class="control-btn-item">
+                        <div class="control-btn flex align-items-center space-around">dell</div>
+                    </li>
+                    <li class="control-btn-item">
+                        <div onclick="addNewLine()" class="control-btn flex align-items-center space-around" >add</div>
+
+                    </li>
+                    <li class="control-btn-item">
+                        <div class="control-btn flex align-items-center space-around" >-</div>
+                    </li>
+                    <li class="control-btn-item">
+                        <div onclick="toggleLine()" class="control-btn flex align-items-center space-around" >tab</div>
+                    </li>
+                  
+                </ul>
             </div>
-            <div class="btn download-btn" >
+            <div class="btn">
                 <span class="back-arrow flex">⬅</span>
-                <div class="flex align-items-center space-around"><a href="#" onclick="downloadImg(this)">
+                <div class="flex align-items-center space-around download-btn">
+                    <a href="#" onclick="downloadImg(this)">
                         Download
-                </a></div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
