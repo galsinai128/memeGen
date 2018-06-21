@@ -1,7 +1,7 @@
 'use strict';
 var gImgs = [];
 var gImageId = 0;
-var gMemes = {};
+var gMeme = {};
 
 
 
@@ -54,9 +54,14 @@ function getImgs(){
 }
 
 function createMeme(imgId,txts){
-    gMemes =  {
+    gMeme =  {
         selectedImgid:imgId,
-        props:[txts]
+        txts: [{
+            line: '',
+            size: 30,
+            align: 'left',
+            color: 'white'
+        }]
     }
 }
 
