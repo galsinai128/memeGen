@@ -102,7 +102,7 @@ function renderText(inputValue, alignXForCanvas) {
 
 function drawRectTotxt() {
     //first textbox
-    ctx.strokeRect(10, 10, gBottomTbX, gTbHeight);
+    // ctx.strokeRect(10, 10, gBottomTbX, gTbHeight);
 
     //second textbox
     // ctx.strokeRect(10, gBottomTbY, gBottomTbX, gTbHeight);
