@@ -22,8 +22,9 @@ function renderImgs(imgs) {
 function openGen(elPic){
     var elModal = document.querySelector('.modal');
     document.querySelector('nav h1').classList.add('show')
-    document.querySelector('body').classList.add('non-over-flow');
     document.querySelector('.hedaer-decoration').classList.add('hide');
+    document.querySelector('main').classList.toggle('hide');
+    document.querySelector('body').classList.toggle('modal-back');
     elModal.classList.add('open-modal');
 
    var imgObj =  findImg(elPic);
@@ -37,13 +38,15 @@ function closeGen(){
     elModal.classList.remove('open-modal');
     document.querySelector('nav h1').classList.remove('show')
     document.querySelector('.hedaer-decoration').classList.remove('hide');
-    document.querySelector('body').classList.remove('non-over-flow');
+    document.querySelector('main').classList.remove('hide');
+    document.querySelector('body').classList.toggle('modal-back');
+
 
 }
 
 function displayAlignMenu(){
-    var elAlignMenu = document.querySelector('.align-menu');
-    elAlignMenu.classList.toggle('display-block');
+    // var elAlignMenu = document.querySelector('.align-menu');
+    // elAlignMenu.classList.toggle('display-block');
 }
 
 
@@ -103,4 +106,22 @@ function renderPopularKeysList(){
 
 function searchPopularItem(str){
     filterImagesList(str);
+}
+
+
+function renderNumLine(idx) {
+    var elNumLine = document.querySelector('.line-idx');
+    var strHtml = `Line Number:${idx}`;
+    elNumLine.innerHTML = strHtml;
+}
+
+
+function disableAddLine(){
+    var elAddBtn = document.querySelector('.new-line').classList.add('disabled');
+    
+}
+
+function enabledAddLine(){
+    var elAddBtn = document.querySelector('.new-line').classList.remove('disabled');
+    
 }

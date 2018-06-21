@@ -66,8 +66,8 @@ function createMeme(imgId,txts){
 function createMemeProp(posY) {
     return {
         line: '',
-        size: 30,
-        align: 'left',
+        size: 40,
+        align: 200,
         color: 'white',
        coorY:!posY?50:posY
     }

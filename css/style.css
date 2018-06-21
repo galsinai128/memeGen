@@ -6,15 +6,13 @@
     font-family: lato;
     src:url("../fonts/Lato-Regular.ttf");
 }
-@font-face {
-    font-family: Shrikhand;
-    src:url("../fonts/Shrikhand-Regular.ttf");
-}
+
 
 body {
     margin:0;
     font-family: lato, 'Times New Roman', Times, serif;
 }
+
 
 
 /******************************************************HELPERS**********************************/
@@ -65,13 +63,13 @@ img, embed, video, object {
     flex-wrap: wrap;
 }
 
-.non-over-flow {
-    overflow: hidden;
-}
+
 
 /************************************************END***HELPERS**********************************/
 main {
     padding: 10px;
+    margin:20px 0 0 0;
+
 }
 .imgs-list{
     display: flex;
@@ -95,27 +93,29 @@ main {
 
 
 .modal{
-    height:  calc(100% - 60px);
-    width: 100%;
-    top: 60px;
+    /* height:  calc(100% - 60px); */
+    /* width: 100%; */
+    /* top: 60px; */
     padding: 10px;
-    position: fixed; 
+    /* position: fixed;  */
     z-index: 2;
     background-color: #404040;
     opacity: 0;
-    visibility: hidden;
+    display: none;
     transition:all 0.4s;
 }
 
 .open-modal{
+   
     opacity: 1;
-    visibility: visible;
+    display: block;
 }
-
+.modal-back {
+    background-color: #404040;
+}
 .meme-img {
     margin: 0 20px 0 0;
-    width: 60%;
-    max-width: 500px;
+    /* width: 60%; */
     align-items: center;
     flex-direction: column;
 }
@@ -168,6 +168,11 @@ main {
     padding: 10px;
 }
 
+.line-idx {
+    margin: 0 0 10px;
+    color: #dcd1d1;
+    padding: 0 2px 0;
+}
 .meme-input-line{
     border:none;
     border-bottom: 1px solid black;
@@ -196,6 +201,12 @@ main {
     transition: all 0.3s;
     width: 100%;
     text-align: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+ .disabled{
+    opacity: 0.3;
 }
 
 .control-btn:hover, .control-btn:active {
@@ -204,12 +215,14 @@ main {
 .fonts-btn, .download-btn{
     width: 100%;
 }
-
+.align-container {
+    position: relative;
+}
 
 /* Header */
 header {
     background-color: #323232;
-    margin: 0 0 20px 0;
+    /* margin: 0 0 20px 0; */
 }
 
 .hedaer-decoration {
@@ -237,7 +250,6 @@ nav {
 nav h1 {
     display: none;
     margin: 0;
-    font-family: Shrikhand,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #2eb398;
 }
 
@@ -264,10 +276,21 @@ height: 60px;
 }
 
 
-.align-menu{
+.align-menu {
     display: none;
-    position: absolute;}
+    position: absolute;
+    top: 105%;
+    border: 1px solid black;
+}
+.align-menu li button {
+    background-color: #93b3cc;
+}
 
+
+.align-container:hover .align-menu {
+        display: block;
+   
+}
 .display-block{
     display: block;
 }
@@ -278,20 +301,23 @@ height: 60px;
 
 .filter-search{
     margin: 0.5rem;
-    width: 100%;
+    /* width: 100%; */
     height: 40px;
     text-align: center;
-    margin: 1px;
+    margin: 0 0 10px;
+
 }
 
 .popular-searches{
-    width: 100%;
     background-color: orange;
-    height: 80px;
-    margin: 1px;
+    margin: 0 0 10px;
+    width: 50%;
+    min-height: 100px;
+    flex-wrap: wrap;
 }
 
 .popular-item{
+    margin: 0 5px 0 0;
     color: white;
     cursor: pointer;
 }
