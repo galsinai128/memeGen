@@ -6,7 +6,6 @@ var currImg = null;
 var gBottomTbY;
 var gBottomTbX;
 var gTbHeight = 50;
-var gPosTxt;
 
 var LEFT;
 var CENTER;
@@ -20,20 +19,18 @@ function initCanvas() {
     // canvas.width = 350;
     // canvas.height = 350;
     var currLine = gMeme.txts[gCurrLineIdx];
+    setAlignCoords();
+
     renderNumLine(gCurrLineIdx);
     ctx.font = `${currLine.size}px Impact`;
     ctx.textAlign = currLine.align;
     ctx.fillStyle = currLine.color;
     ctx.stroleStyle = 'black';
-
-    gPosTxt = null;
-
-    setAlignCoords()
 }
 
 function setAlignCoords() {
     LEFT = 15;
-    CENTER = (canvas.width / 2) - 10;
+    CENTER = (canvas.width / 2) - 20;
     RIGHT = (canvas.width / 2) + 150;
 }
 
@@ -63,6 +60,7 @@ function clearCanvas() {
 
 function drawText(ev, txtStr) {
     var elInputTxt = document.querySelector('.meme-input-line');
+    var currMeme = gMeme.txts[gCurrLineIdx];
     elInputTxt.maxLength = gBottomTbX;
 
     gMeme.txts[gCurrLineIdx].line = txtStr;
@@ -73,10 +71,16 @@ function drawText(ev, txtStr) {
         clearCanvas();
     }
 
+    if(currMeme.align + currTxtWidth > canvas.width - 10 ) {
+        var shiftWidth = ctx.measureText(txtStr[txtStr.length - 1]).width;
+        moveLeft(shiftWidth );
+    }
+
     if ((currTxtWidth >= gBottomTbX - 20)) {
         elInputTxt.maxLength = elInputTxt.value.length;
         return;
     }
+
     clearCanvas();
     renderText(txtStr);
 
@@ -99,16 +103,16 @@ function renderText(inputValue) {
 
 function addNewLine() {
     cleanEmptyLine();
-    
+
     var elInputTxt = document.querySelector('.meme-input-line');
 
     var currMemePosY = gMeme.txts[gCurrLineIdx].coorY;
     var memeLen = gMeme.txts.length;
     if (memeLen < 5) {
-        
-        if (memeLen === 1){
+
+        if (memeLen === 1) {
             currMemePosY = canvas.height - 20;
-        } else if(memeLen === 2) {
+        } else if (memeLen === 2) {
             currMemePosY = gMeme.txts[gCurrLineIdx - 1].coorY + 80;
         } else {
             currMemePosY = gMeme.txts[gCurrLineIdx].coorY + 80;
@@ -135,11 +139,11 @@ function onCanvasClick(ev) {
         return;
     }
 
-    if(ev.clientY < canvas.height - 10 && ev.clientY > canvas.height / 2){
-    gMeme.txts[gCurrLineIdx].coorY = ev.clientY;
-    clearCanvas();
-    renderText();
-    } else if ( y > 20 ){
+    if (ev.clientY < canvas.height - 10 && ev.clientY > canvas.height / 2) {
+        gMeme.txts[gCurrLineIdx].coorY = ev.clientY;
+        clearCanvas();
+        renderText();
+    } else if (y > 20) {
         gMeme.txts[gCurrLineIdx].coorY = y + 10;
         clearCanvas();
         renderText();
@@ -161,23 +165,24 @@ function onCanvasClick(ev) {
 
 }
 
-function moveRight(){
+function moveRight() {
     var currMeme = gMeme.txts[gCurrLineIdx];
     var currTxtWidth = ctx.measureText(currMeme.line).width;
-    if(currMeme.align + currTxtWidth < canvas.width - 10){
+    if (currMeme.align + currTxtWidth < canvas.width - 10) {
         gMeme.txts[gCurrLineIdx].align = currMeme.align + 5;
         clearCanvas();
         renderText();
     }
- 
+
 }
 
-function moveLeft(){
+function moveLeft(size) {
+    size = size ? size :5
     var currMeme = gMeme.txts[gCurrLineIdx];
-    if(currMeme.align > 10){
-    gMeme.txts[gCurrLineIdx].align = currMeme.align - 5;
-    clearCanvas();
-    renderText();
+    if (currMeme.align > 10) {
+        gMeme.txts[gCurrLineIdx].align = currMeme.align - size;
+        clearCanvas();
+        renderText();
     }
 }
 
@@ -189,7 +194,7 @@ function TabLines() {
     elInputTxt.value = gMeme.txts[gCurrLineIdx].line;
     if (elInputTxt.value !== gMeme.txts[gCurrLineIdx].line) {
         gMeme.txts[gCurrLineIdx].line += elInputTxt.value
-        
+
 
     }
     renderNumLine(gCurrLineIdx);
@@ -247,18 +252,25 @@ function resizeText(isPlus) {
 
 function setAlign(val) {
     var currMeme = gMeme.txts[gCurrLineIdx];
+    var txtLen = ctx.measureText(currMeme.line).width;
+    var icon  = val;
     switch (val) {
         case 'L':
+        icon = 'left';
             val = LEFT
             break;
         case 'C':
+        icon = 'center';
             val = CENTER;
             break;
         case 'R':
+        icon = 'right';
+            RIGHT = (canvas.width - 10) - txtLen;
             val = RIGHT
             break;
     }
     currMeme.align = val;
+    setIconAlign(icon);
     clearCanvas();
     drawText('', currMeme.line);
 }

@@ -67,7 +67,7 @@ function createMemeProp(posY) {
     return {
         line: '',
         size: 40,
-        align: 200,
+        align: 300,
         color: 'white',
        coorY:!posY?50:posY
     }

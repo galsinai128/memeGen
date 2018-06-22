@@ -18,8 +18,8 @@
         <nav class="flex">
             <h1>De Meme Generator</h1>
             <ul class="nav-list clean-list flex">
-                <li>
-                    <a class="flex align-items-center">Gallery</a>
+                <li  onclick="closeGen();toggleActive(this)">
+                    <a   class="flex align-items-center" href="#gallery">Gallery</a>
 
                 </li>
 
@@ -51,10 +51,10 @@
                             <input type="text" class="meme-input-line" oninput="drawText(event,this.value)">
                             <ul class="control-btns-list clean-list flex justify-content-center">
                                 <li class="control-btn-item">
-                                    <div class="control-btn flex">B</div>
+                                    <div class="control-btn flex fa fa-bold"></div>
                                 </li>
                                 <li class="control-btn-item">
-                                    <div onclick="displayAlignMenu()" class="fa fa-align-left control-btn align-container flex ">
+                                    <div  class="control-btn align-container flex fa fa-align-center">
                                         <ul class="align-menu clean-list">
                                             <li>
                                                 <button onclick="setAlign('L')" class="control-btn fa fa-align-left"></button>
@@ -125,7 +125,7 @@
            
             <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
         </div>
-        <ul id="img-gallery" class="imgs-list clean-list">
+        <ul id="gallery" class="imgs-list clean-list">
 
         </ul>
     </main>
