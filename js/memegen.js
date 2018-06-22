@@ -36,6 +36,7 @@ function openGen(elPic) {
 }
 
 function closeGen() {
+     document.querySelector('.meme-input-line').value = '';
     var elModal = document.querySelector('.modal');
     elModal.classList.remove('open-modal');
     document.querySelector('.hedaer-decoration').classList.remove('hide');
