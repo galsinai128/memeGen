@@ -29,10 +29,11 @@ function openGen(elPic) {
 
     var imgObj = findImg(elPic);
     createMeme(imgObj.id);
-    drawImg(elPic);
+    drawImg(elPic); 
 }
 
 function closeGen() {
+     document.querySelector('.meme-input-line').value = '';
     var elModal = document.querySelector('.modal');
     elModal.classList.remove('open-modal');
     document.querySelector('.hedaer-decoration').classList.remove('hide');
@@ -73,9 +74,10 @@ function filterImagesList(popularStr) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
             if (filter === keyword) {
-                strHtml += `<li><div class="list-item-container">
+                strHtml += `<li><div class="list-item-container>
                             <img id="${gImgs[i].url}" src="${gImgs[i].url}" 
-                            onclick="openGen(this)" alt="No Pciture to displaye"></div></li>`
+                            onclick="openGen(this)" alt="No Pciture to displaye">
+                            </div></li>`
             }
         }
     }
@@ -110,7 +112,7 @@ function searchPopularItem(str) {
 
 function renderNumLine(idx) {
     var elNumLine = document.querySelector('.line-idx');
-    var strHtml = `Line Number:${idx}`;
+    var strHtml = `Line Number:${idx + 1}`;
     elNumLine.innerHTML = strHtml;
 }
 

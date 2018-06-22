@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="img/logo/icon.png" />
     <link rel="stylesheet" href="css/style.css" />
     <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
@@ -15,9 +16,10 @@
 <body onload="init()">
 
     <header>
-            <div class="logo"></div>
+        <div class="logo">
+        </div>
         <nav class="flex">
-                
+
             <button onclick="openMenu(this)" class="btn btn-menu fa fa-bars"></button>
             <ul class="nav-list clean-list flex">
                 <li onclick="closeGen();toggleActive(this)">
@@ -25,8 +27,8 @@
 
                 </li>
 
-                <li>
-                    <a class="flex align-items-center">About</a>
+                <li onclick="toggleActive(this)">
+                    <a href="#about" class="flex align-items-center">About</a>
                     <div class="hedaer-decoration">
                         <img src="img/other/hex.png" />
                     </div>
@@ -38,7 +40,7 @@
         </nav>
     </header>
     <div class="modal">
-        <div class="modal-container flex space-around">
+        <div class="canvas-container flex space-around flex-dir-col">
             <div onclick="onCanvasClick(event)" class="meme-img flex">
                 <div class="btn modal-back-btn" onclick="closeGen()">
                     <span class="back-arrow flex fa fa-arrow-left"></span>
@@ -67,7 +69,7 @@
                     </ul>
                     <ul class="control-btns-list clean-list flex justify-content-center">
                         <li>
-                            <div class="font-container control-btn flex">fonts
+                            <div class="font-container control-btn flex fa fa-font">
                                 <ul class="font-menu clean-list">
                                     <li>
                                         <button onclick="setFont('Impact')" class="control-btn" style="font-family: Impact">Impact</button>
@@ -131,7 +133,7 @@
 
                     </ul>
                 </div>
-                <div class="btn">
+                <div class="btn btn-down">
                     <span class="back-arrow flex fa fa-download"></span>
                     <div class="flex align-items-center space-around download-btn">
                         <a href="#" onclick="downloadImg(this)">
@@ -143,7 +145,7 @@
         </div>
     </div>
 
-    <main class="flex flex-dir-col justify-content-center align-items-center">
+    <main id="top" class="flex flex-dir-col justify-content-center align-items-center">
         <div class="filter-container flex flex-dir-col align-items-center">
             <input onchange="filterImagesList()" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
             <datalist id="keywords">
@@ -159,28 +161,29 @@
 
         </ul>
     </main>
-    <section class="about flex justify-content-center">
-        <div class="about-container flex space-between">
-            <img src="img/other/ca-logo@2x.png" alt="no photo to display">
+    <section id="about" class="about flex justify-content-center">
+        <div class="about-container flex flex-dir-col space-between">
+            <div class="about-logo"></div>
+            <!-- <img src="img/other/ca-logo@2x.png" alt="no photo to display"> -->
             <div class="about-text-container">
                 <h1>Omer Sela & Gal Sinai</h1>
-                <h3 class="about-description">Full-stack programers</h3>
+                <h3>Full-stack programers</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea deleniti magnam porro, quibusdam distinctio aut
                     fuga reprehenderit aspernatur. Iste, nostrum tempora corrupti quaerat sequi accusamus quo expedita sunt
                     facere neque.
                 </p>
                 <ul class="contact-us-container clean-list flex space-around align-items-center">
                     <li class="contact-us facebook flex space-around align-items-center">
-                        <i class="fab fa-facebook-f"></i>
+                        <i class="fa fa-facebook-f"></i>
                     </li>
                     <li class="contact-us twiter flex space-around align-items-center">
-                        <i class="fab fa-twitter"></i>
+                        <i class="fa fa-twitter"></i>
                     </li>
                     <li class="contact-us behance flex space-around align-items-center">
-                        <i class="fab fa-behance"></i>
+                        <i class="fa fa-behance"></i>
                     </li>
                     <li class="contact-us dribble flex space-around align-items-center">
-                        <i class="fab fa-dribbble"></i>
+                        <i class="fa fa-dribbble"></i>
                     </li>
                 </ul>
             </div>
