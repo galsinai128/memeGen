@@ -429,6 +429,48 @@ color:inherit;
 
 
 @media(min-width:700px) {
+.about-text-container{
+
+    margin-left: 1rem;
+}
+
+.about-description{
+    color: #6b6b6b;
+}
+
+
+.contact-us-container{
+    width: 230px;
+}
+
+.contact-us{
+    width: 40px;
+    height: 40px;
+    background-color: #b6b6b6;
+    cursor: pointer;
+}
+
+path{
+    color: white
+}
+
+.facebook:hover{
+    background-color: #3b5998
+}
+
+.twiter:hover{
+    background-color:#00aced; 
+}
+
+.behance:hover{
+    background-color: #1769ff;
+}
+
+.dribble:hover {
+    background-color: #ea4c89;
+}
+@media(max-width:700px) {
+
     nav {
         padding: 5px;
         justify-content: space-around;

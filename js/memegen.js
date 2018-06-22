@@ -60,6 +60,7 @@ function filterImagesList(popularStr) {
     var elFilter = document.querySelector('.filter-search');
     if (!popularStr) {
         var filter = elFilter.value;
+        gPopularKeywordMap[filter]++;
     }
     else {
         var filter = popularStr;
@@ -84,7 +85,6 @@ function filterImagesList(popularStr) {
     }
     elUlImgs.innerHTML = strHtml;
     elFilter.value = '';
-    gPopularKeywordMap[filter]++;
     saveToStorage('popular-keys', gPopularKeywordMap);
     renderPopularKeysList();
 }
@@ -94,8 +94,14 @@ function renderPopularKeysList() {
     var strHtml = '';
     for (var i in gPopularKeywordMap) {
         if (gPopularKeywordMap[i] > 2) {
-            strHtml += `<li onclick="searchPopularItem(this.textContent)" class="popular-item" 
-                        style="font-size:${gPopularKeywordMap[i] * 0.2}rem">${i}</li>`
+            if (gPopularKeywordMap[i] <=15){
+                strHtml += `<li onclick="searchPopularItem(this.textContent)" class="popular-item" 
+                            style="font-size:${gPopularKeywordMap[i] * 0.2}rem">${i}</li>`
+            }
+            else {
+                strHtml += `<li onclick="searchPopularItem(this.textContent)" class="popular-item" 
+                            style="font-size:${15 * 0.2}rem">${i}</li>`
+            }
         }
     }
     elPopularItems.innerHTML = strHtml;
