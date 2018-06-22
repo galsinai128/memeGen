@@ -428,7 +428,7 @@ color:inherit;
 
 
 
-@media(min-width:700px) {
+
 .about-text-container{
 
     margin-left: 1rem;
@@ -451,7 +451,7 @@ color:inherit;
 }
 
 path{
-    color: white
+    color: white;
 }
 
 .facebook:hover{
@@ -469,7 +469,8 @@ path{
 .dribble:hover {
     background-color: #ea4c89;
 }
-@media(max-width:700px) {
+
+@media(min-width:700px) {
 
     nav {
         padding: 5px;
@@ -497,4 +498,4 @@ path{
 
 .open-list {
     opacity: 1;
-    }
+}
