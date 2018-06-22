@@ -12,14 +12,14 @@
 </head>
 
 <body onload="init()">
-    
+
     <header>
 
         <nav class="flex">
             <h1>De Meme Generator</h1>
             <ul class="nav-list clean-list flex">
-                <li  onclick="closeGen();toggleActive(this)">
-                    <a   class="flex align-items-center" href="#gallery">Gallery</a>
+                <li onclick="closeGen();toggleActive(this)">
+                    <a class="flex align-items-center" href="#gallery">Gallery</a>
 
                 </li>
 
@@ -36,100 +36,140 @@
         </nav>
     </header>
     <div class="modal">
-            <div class="flex space-around">
-                    <div onclick="onCanvasClick(event)" class="meme-img flex">
-                        <div class="btn modal-back-btn" onclick="closeGen()">
-                            <span class="back-arrow flex fa fa-arrow-left"></span>
-                            <div class="flex align-items-center space-around">Back to gallery</div>
-                        </div>
-                        <canvas class="canvas"></canvas>
-                    </div>
-                    <div class="meme-box-control flex flex-dir-col space-between">
-                        <div class="box-control container">
-                            <h4 class="line-idx"></h4>
+        <div class="flex space-around">
+            <div onclick="onCanvasClick(event)" class="meme-img flex">
+                <div class="btn modal-back-btn" onclick="closeGen()">
+                    <span class="back-arrow flex fa fa-arrow-left"></span>
+                    <div class="flex align-items-center space-around">Back to gallery</div>
+                </div>
+                <canvas class="canvas"></canvas>
+            </div>
+            <div class="meme-box-control flex flex-dir-col space-between">
+                <div class="box-control container">
+                    <h4 class="line-idx"></h4>
 
-                            <input type="text" class="meme-input-line" oninput="drawText(event,this.value)">
-                            <ul class="control-btns-list clean-list flex justify-content-center">
-                                <li class="control-btn-item">
-                                    <div class="control-btn flex fa fa-bold"></div>
-                                </li>
-                                <li class="control-btn-item">
-                                    <div  class="control-btn align-container flex fa fa-align-center">
-                                        <ul class="align-menu clean-list">
-                                            <li>
-                                                <button onclick="setAlign('L')" class="control-btn fa fa-align-left"></button>
-                                            </li>
-                                            <li>
-                                                <button onclick="setAlign('C')" class="control-btn fa fa-align-center"></button>
-                                            </li>
-                                            <li>
-                                                <button onclick="setAlign('R')" class="control-btn fa fa-align-right"></button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="control-btn-item">
-                                    <div class="control-btn flex  fa fa-minus" onclick="reduceText()"></div>
-                                </li>
-                                <li class="control-btn-item">
-                                    <div class="control-btn flex  fa fa-plus" onclick="enlargeText()"></div>
-                                </li>
-                                <li class="control-btn-item">
-                                    <input class="control-btn" oninput="colorChange(this)" type="color" id="txtColor">
-                                </li>
-                            </ul>
-                            <button class="control-btn fonts-btn">drop down for fonts</button>
-                            <ul class="control-btns-list clean-list flex justify-content-center">
-                                <li class="control-btn-item">
-                                    <div onclick="deleteLine()" class="control-btn flex fa fa-trash-o"></div>
-                                </li>
-                                <li class="control-btn-item">
-                                    <div onclick="addNewLine()" class="new-line control-btn flex fa fa-plus-circle" ></div>
-            
-                                </li>
-                            </ul>
-                            <ul class="control-btns-list clean-list flex justify-content-center">
-                                    <li class="control-btn-item">
-                                        <div onclick="moveRight()" class="control-btn flex fa fa-arrow-right"></div>
+                    <input type="text" class="meme-input-line" oninput="drawText(event,this.value)">
+                    <ul class="control-btns-list clean-list flex justify-content-center">
+                        <li class="control-btn-item">
+                            <div class="control-btn flex fa fa-bold" onclick="toggleBold(this)"></div>
+                        </li>
+                        <li class="control-btn-item">
+                            <div class="control-btn flex  fa fa-minus" onclick="reduceText()"></div>
+                        </li>
+                        <li class="control-btn-item">
+                            <div class="control-btn flex  fa fa-plus" onclick="enlargeText()"></div>
+                        </li>
+                        <li class="control-btn-item">
+                            <input class="control-btn" oninput="colorChange(this)" type="color" id="txtColor">
+                        </li>
+                    </ul>
+                    <ul class="control-btns-list clean-list flex justify-content-center">
+                        <li>
+                            <div class="font-container control-btn flex">fonts
+                                <ul class="font-menu clean-list">
+                                    <li>
+                                        <button onclick="setFont('Impact')" class="control-btn">Impact</button>
                                     </li>
-                                    <li class="control-btn-item">
-                                        <div onclick="moveLeft()" class="control-btn flex fa fa-arrow-left" ></div>
+                                    <li>
+                                        <button onclick="setFont('Arial')" class="control-btn">Arial</button>
                                     </li>
-                                    <li class="control-btn-item">
-                                        <div onclick="TabLines()" class="control-btn flex" >Tab</div>
+                                    <li>
+                                        <button onclick="setFont('Courier')" class="control-btn">Courier</button>
                                     </li>
-                                  
+                                    <li>
+                                        <button onclick="setFont('Helvetica')" class="control-btn">Helvetica</button>
+                                    </li>
+                                    <li>
+                                        <button onclick="setFont('Times')" class="control-btn">Times</button>
+                                    </li>
+                                    <li>
+                                        <button onclick="setFont('Verdana')" class="control-btn">Verdana</button>
+                                    </li>
                                 </ul>
-                        </div>
-                        <div class="btn">
-                            <span class="back-arrow flex fa fa-download"></span>
-                            <div class="flex align-items-center space-around download-btn">
-                                <a href="#" onclick="downloadImg(this)">
-                                    Download
-                                </a>
                             </div>
-                        </div>
+                        </li>
+                        <li class="control-btn-item">
+                            <div class="control-btn align-container flex fa fa-align-center">
+                                <ul class="align-menu clean-list">
+                                    <li>
+                                        <button onclick="setAlign('L')" class="control-btn fa fa-align-left"></button>
+                                    </li>
+                                    <li>
+                                        <button onclick="setAlign('C')" class="control-btn fa fa-align-center"></button>
+                                    </li>
+                                    <li>
+                                        <button onclick="setAlign('R')" class="control-btn fa fa-align-right"></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="control-btn" onclick="toggleShadow(this)">S</button>
+                        </li>
+                    </ul>
+                    <ul class="control-btns-list clean-list flex justify-content-center">
+                        <li class="control-btn-item">
+                            <div onclick="deleteLine()" class="control-btn flex fa fa-trash-o"></div>
+                        </li>
+                        <li class="control-btn-item">
+                            <div onclick="addNewLine()" class="new-line control-btn flex fa fa-plus-circle"></div>
+
+                        </li>
+                    </ul>
+                    <ul class="control-btns-list clean-list flex justify-content-center">
+                        <li class="control-btn-item">
+                            <div onclick="moveRight()" class="control-btn flex fa fa-arrow-right"></div>
+                        </li>
+                        <li class="control-btn-item">
+                            <div onclick="moveLeft()" class="control-btn flex fa fa-arrow-left"></div>
+                        </li>
+                        <li class="control-btn-item">
+                            <div onclick="TabLines()" class="control-btn flex">Tab</div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="btn">
+                    <span class="back-arrow flex fa fa-download"></span>
+                    <div class="flex align-items-center space-around download-btn">
+                        <a href="#" onclick="downloadImg(this)">
+                            Download
+                        </a>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
-  
+
     <main class="flex flex-dir-col justify-content-center align-items-center">
         <div class="filter-container flex flex-dir-col align-items-center">
-                <input onchange="filterImagesList()" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
-                <datalist id="keywords">
-                    
-                </datalist>
+            <input onchange="filterImagesList()" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
+            <datalist id="keywords">
+
+            </datalist>
             <ul class="popular-searches clean-list flex space-around align-items-center">
 
             </ul>
-           
+
             <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
         </div>
         <ul id="gallery" class="imgs-list clean-list">
 
         </ul>
     </main>
-    <section class="about"></section>
+    <section class="about flex justify-content-center">
+        <div class="about-container flex space-between">
+            <img src="img/other/ca-logo@2x.png" alt="no photo to display">
+            <div class="about-text-container">
+                <h1>Omer Sela & Gal Sinai</h1>
+                <h3 class="about-description">Full-stack programers</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea deleniti magnam porro, quibusdam distinctio aut fuga
+                    reprehenderit aspernatur. Iste, nostrum tempora corrupti quaerat sequi accusamus quo expedita sunt facere
+                    neque.
+                </p>
+            </div>
+        </div>
+    </section>
     <section class="contact"></section>
     <footer></footer>
 
