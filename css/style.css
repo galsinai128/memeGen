@@ -221,10 +221,14 @@ main {
 .control-btn:hover, .control-btn:active {
     color:black;
 }
+
+.control-btn-active{
+    color:black;
+}
 .fonts-btn, .download-btn{
     width: 100%;
 }
-.align-container {
+.align-container, .font-container {
     position: relative;
 }
 
@@ -302,18 +306,18 @@ color:inherit;
     color: #2eb398;
 }
 
-.align-menu {
+.align-menu , .font-menu {
     display: none;
     position: absolute;
     top: 105%;
     border: 1px solid black;
 }
-.align-menu li button {
+.align-menu li button , .font-menu li button {
     background-color: #93b3cc;
 }
 
 
-.align-container:hover .align-menu {
+.align-container:hover .align-menu, .font-container:hover .font-menu {
         display: block;
    
 }
@@ -348,7 +352,21 @@ color:inherit;
     cursor: pointer;
 }
 
+.about{
+    background-color: #2eb398;
+    color: white;
+}
 
+.about-container{
+    width: 80%;
+    border-left: #838383 solid 1px;
+    border-right: #838383 solid 1px;
+    padding: 1rem;
+}
+
+.about-description{
+    color: #6b6b6b;
+}
 
 @media(max-width:700px) {
     nav {

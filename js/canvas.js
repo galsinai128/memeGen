@@ -26,6 +26,7 @@ function initCanvas() {
     ctx.textAlign = currLine.align;
     ctx.fillStyle = currLine.color;
     ctx.stroleStyle = 'black';
+    ctx.shadowColor='black';
 }
 
 function setAlignCoords() {
@@ -91,7 +92,14 @@ function renderText(inputValue) {
     for (var i = 0; i < gMeme.txts.length; i++) {
         var currLine = gMeme.txts[i];
         ctx.fillStyle = currLine.color;
-        ctx.font = `${currLine.size}px Impact`;
+        
+        //BOLD
+        if (currLine.isBold) ctx.font = `bold ${currLine.size}px ${currLine.font}`;
+        else ctx.font = `${currLine.size}px ${currLine.font}`;
+        
+        //SHADOW
+        if (currLine.isShadow) ctx.shadowBlur=7;
+        else ctx.shadowBlur=0;
 
         ctx.fillText(currLine.line, currLine.align, currLine.coorY);
         ctx.strokeText(currLine.line, currLine.align, currLine.coorY);
@@ -275,12 +283,35 @@ function setAlign(val) {
     drawText('', currMeme.line);
 }
 
+function setFont(val){
+    var currMeme = gMeme.txts[gCurrLineIdx];
+    currMeme.font = val;
+    clearCanvas();
+    drawText('', currMeme.line);
+}
+
 
 function colorChange(el) {
     var currMeme = gMeme.txts[gCurrLineIdx];
     currMeme.color = el.value;
     clearCanvas();
-    drawText('', currMeme.line)
+    drawText('', currMeme.line);
+}
+
+function toggleBold(el){
+    var currMeme = gMeme.txts[gCurrLineIdx];
+    currMeme.isBold = !currMeme.isBold;
+    clearCanvas();
+    drawText('', currMeme.line);
+    el.classList.toggle('control-btn-active');
+}
+
+function toggleShadow(el){
+    var currMeme = gMeme.txts[gCurrLineIdx];
+    currMeme.isShadow = !currMeme.isShadow;
+    clearCanvas();
+    drawText('', currMeme.line);
+    el.classList.toggle('control-btn-active');
 }
 
 function downloadImg(elLink) {

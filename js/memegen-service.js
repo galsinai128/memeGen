@@ -69,7 +69,10 @@ function createMemeProp(posY) {
         size: 40,
         align: 300,
         color: 'white',
-       coorY:!posY?50:posY
+       coorY:!posY?50:posY,
+       isBold : false,
+       isShadow : false,
+       font: 'Impact'
     }
 }
 
@@ -77,7 +80,6 @@ function findImg(img) {
  var objImg = gImgs.find(function(item){
         return (item.url === img.id)
     });
-    console.log(objImg);
     return objImg;
 }
 
