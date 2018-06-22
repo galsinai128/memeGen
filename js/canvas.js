@@ -42,13 +42,24 @@ function drawImg(imgUrl) {
         currImg = imgUrl;
         var img = new Image()
         img.src = imgUrl.src;
-        canvas.width = img.width
+        canvas.width = img.width;
         canvas.height = img.height;
         gBottomTbY = (canvas.height - 50) - 10;
         gBottomTbX = canvas.width - 20;
         img.onload = function () {
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        }
+                // var sourceX = 150;
+                // var sourceY = 0;
+                // var sourceWidth = img.width;
+                // var sourceHeight = img.height;
+                // var destWidth = sourceWidth;
+                // var destHeight = sourceHeight;
+                // var destX = canvas.width / 2 - destWidth / 2;
+                // var destY = canvas.height / 2 - destHeight / 2;
+                // ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+              };
+
+        
     } else {
         ctx.drawImage(currImg, 0, 0, canvas.width, canvas.height);
     }

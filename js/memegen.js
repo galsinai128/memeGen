@@ -13,7 +13,7 @@ function renderImgs(imgs) {
     var elUlImgs = document.querySelector('.imgs-list');
     var strHtml = '';
     imgs.forEach(function (img) {
-        strHtml += `<li><div class="list-item-container"><img id="${img.url}" src="${img.url}" onclick="openGen(this)" alt="No Pciture to displaye"></div></li>`
+        strHtml += `<li><div class="list-item-container"><img id="${img.url}" class="galery-img" src="${img.url}" onclick="openGen(this)" alt="No Pciture to displaye"></div></li>`
     });
     elUlImgs.innerHTML = strHtml;
 
@@ -23,6 +23,7 @@ function openGen(elPic) {
     var elModal = document.querySelector('.modal');
     document.querySelector('.hedaer-decoration').classList.add('hide');
     document.querySelector('main').classList.toggle('hide');
+    document.querySelector('.about').classList.add('hide');
     elModal.classList.add('open-modal');
     toggleActive();
 
@@ -36,7 +37,7 @@ function closeGen() {
     elModal.classList.remove('open-modal');
     document.querySelector('.hedaer-decoration').classList.remove('hide');
     document.querySelector('main').classList.remove('hide');
-
+    document.querySelector('.about').classList.remove('hide');
 
 }
 
