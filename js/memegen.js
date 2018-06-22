@@ -21,10 +21,8 @@ function renderImgs(imgs) {
 
 function openGen(elPic) {
     var elModal = document.querySelector('.modal');
-    document.querySelector('nav h1').classList.add('show')
     document.querySelector('.hedaer-decoration').classList.add('hide');
     document.querySelector('main').classList.toggle('hide');
-    document.querySelector('body').classList.add('modal-back');
     elModal.classList.add('open-modal');
     toggleActive();
 
@@ -36,10 +34,8 @@ function openGen(elPic) {
 function closeGen() {
     var elModal = document.querySelector('.modal');
     elModal.classList.remove('open-modal');
-    document.querySelector('nav h1').classList.remove('show')
     document.querySelector('.hedaer-decoration').classList.remove('hide');
     document.querySelector('main').classList.remove('hide');
-    document.querySelector('body').classList.remove('modal-back');
 
 
 }
@@ -153,4 +149,13 @@ function setIconAlign(selectedAlign) {
             break;
         }
     }
+}
+
+function openMenu(elbtn){
+    var elMenu = document.querySelector('.nav-list');
+    elMenu.classList.toggle('open-list');
+
+    elbtn.classList.toggle('fa-bars');
+    elbtn.classList.toggle('fa-times');
+
 }

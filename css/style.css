@@ -11,6 +11,8 @@
 body {
     margin:0;
     font-family: lato, 'Times New Roman', Times, serif;
+    background-color: #404040;
+
 }
 
 
@@ -106,13 +108,10 @@ main {
 }
 
 .open-modal{
-   
     opacity: 1;
     display: block;
 }
-.modal-back {
-    background-color: #404040;
-}
+
 .meme-img {
     margin: 0 20px 0 0;
     /* width: 60%; */
@@ -161,6 +160,16 @@ main {
     text-decoration: none;
 }
 
+.btn-menu {
+    margin:0;
+    width: 50px;
+    opacity: 0;
+    display: none;
+    
+}
+.btn-menu:hover,.btn-menu:active {
+    color:black;
+}
 
 .canvas{
     box-shadow: 0 0 9px #1b1a1a;
@@ -226,7 +235,9 @@ main {
 /* Header */
 header {
     background-color: #323232;
-    /* margin: 0 0 20px 0; */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 0 5px 0 0;
 }
 
 .hedaer-decoration {
@@ -250,18 +261,25 @@ nav {
     min-height: 60px;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
-nav h1 {
-    display: none;
-    margin: 0;
-    color: #2eb398;
-}
+
 
 
 .nav-list {
     color: #ffffff;
     font-family: lato, 'Times New Roman', Times, serif;
+    transition: all 0.3s;
 }
+
+header .logo {
+    width: 50px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-size: contain;
+    background-image: url("../img/logo/icon.png");
+}
+
 .nav-list li {
     position: relative;
 }
@@ -270,10 +288,11 @@ nav h1 {
 cursor: pointer;
 margin: 0 30px 0;
 font-weight: 700;
-line-height: 6.32px;
+line-height: 20px;
 text-decoration: none;
 text-transform: uppercase;
 height: 60px;
+justify-content: space-around;
 color:inherit;
 }
 
@@ -354,6 +373,7 @@ color:inherit;
     color: #6b6b6b;
 }
 
+<<<<<<< HEAD
 
 .contact-us-container{
     width: 230px;
@@ -385,3 +405,38 @@ path{
 .dribble:hover {
     background-color: #ea4c89;
 }
+=======
+@media(max-width:700px) {
+    nav {
+        padding: 5px;
+        justify-content: flex-end;
+        background-color: inherit;
+    }
+    .btn-menu  {
+        opacity: 1;
+        display: block;
+
+    }
+    .nav-list {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0; 
+        z-index: 3;
+        background-color: inherit;
+        box-shadow: 0 0 0px 1px black;
+        opacity: 0;
+        
+    }
+    .nav-list li:not(:last-child) {
+        box-shadow: 0 1px 0px 0px black
+    }
+   
+    
+    /* */
+}
+
+.open-list {
+    opacity: 1;
+    }
+>>>>>>> f0068ee53782fdf70eece0d6052b915ddd0fec3f
