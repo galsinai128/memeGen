@@ -13,7 +13,11 @@ function renderImgs(imgs) {
     var elUlImgs = document.querySelector('.imgs-list');
     var strHtml = '';
     imgs.forEach(function (img) {
-        strHtml += `<li><div class="list-item-container"><img id="${img.url}" src="${img.url}" onclick="openGen(this)" alt="No Pciture to displaye"></div></li>`
+        strHtml += `<li><div class="list-item-container">
+        <img id="${img.url}" src="${img.url}" onclick="openGen(this)" 
+        alt="No Pciture to displaye">
+        </div>
+        </li>`
     });
     elUlImgs.innerHTML = strHtml;
 
@@ -71,9 +75,10 @@ function filterImagesList(popularStr) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
             if (filter === keyword) {
-                strHtml += `<li><div class="list-item-container">
+                strHtml += `<li><div class="list-item-container>
                             <img id="${gImgs[i].url}" src="${gImgs[i].url}" 
-                            onclick="openGen(this)" alt="No Pciture to displaye"></div></li>`
+                            onclick="openGen(this)" alt="No Pciture to displaye">
+                            </div></li>`
             }
         }
     }
@@ -103,7 +108,7 @@ function searchPopularItem(str) {
 
 function renderNumLine(idx) {
     var elNumLine = document.querySelector('.line-idx');
-    var strHtml = `Line Number:${idx}`;
+    var strHtml = `Line Number:${idx + 1}`;
     elNumLine.innerHTML = strHtml;
 }
 

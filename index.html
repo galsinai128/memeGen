@@ -14,9 +14,10 @@
 <body onload="init()">
 
     <header>
-            <div class="logo"></div>
+        <div class="logo">
+        </div>
         <nav class="flex">
-                
+
             <button onclick="openMenu(this)" class="btn btn-menu fa fa-bars"></button>
             <ul class="nav-list clean-list flex">
                 <li onclick="closeGen();toggleActive(this)">
@@ -24,8 +25,8 @@
 
                 </li>
 
-                <li>
-                    <a class="flex align-items-center">About</a>
+                <li onclick="toggleActive(this)">
+                    <a href="#about" class="flex align-items-center">About</a>
                     <div class="hedaer-decoration">
                         <img src="img/other/hex.png" />
                     </div>
@@ -37,7 +38,7 @@
         </nav>
     </header>
     <div class="modal">
-        <div class="flex space-around">
+        <div class="canvas-container flex space-around flex-dir-col">
             <div onclick="onCanvasClick(event)" class="meme-img flex">
                 <div class="btn modal-back-btn" onclick="closeGen()">
                     <span class="back-arrow flex fa fa-arrow-left"></span>
@@ -66,7 +67,7 @@
                     </ul>
                     <ul class="control-btns-list clean-list flex justify-content-center">
                         <li>
-                            <div class="font-container control-btn flex">fonts
+                            <div class="font-container control-btn flex fa fa-font">
                                 <ul class="font-menu clean-list">
                                     <li>
                                         <button onclick="setFont('Impact')" class="control-btn">Impact</button>
@@ -130,7 +131,7 @@
 
                     </ul>
                 </div>
-                <div class="btn">
+                <div class="btn btn-down">
                     <span class="back-arrow flex fa fa-download"></span>
                     <div class="flex align-items-center space-around download-btn">
                         <a href="#" onclick="downloadImg(this)">
@@ -142,7 +143,7 @@
         </div>
     </div>
 
-    <main class="flex flex-dir-col justify-content-center align-items-center">
+    <main id="top" class="flex flex-dir-col justify-content-center align-items-center">
         <div class="filter-container flex flex-dir-col align-items-center">
             <input onchange="filterImagesList()" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
             <datalist id="keywords">
@@ -158,15 +159,16 @@
 
         </ul>
     </main>
-    <section class="about flex justify-content-center">
-        <div class="about-container flex space-between">
-            <img src="img/other/ca-logo@2x.png" alt="no photo to display">
+    <section id="about" class="about flex justify-content-center">
+        <div class="about-container flex flex-dir-col space-between">
+            <div class="about-logo"></div>
+            <!-- <img src="img/other/ca-logo@2x.png" alt="no photo to display"> -->
             <div class="about-text-container">
                 <h1>Omer Sela & Gal Sinai</h1>
-                <h3 class="about-description">Full-stack programers</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea deleniti magnam porro, quibusdam distinctio aut fuga
-                    reprehenderit aspernatur. Iste, nostrum tempora corrupti quaerat sequi accusamus quo expedita sunt facere
-                    neque.
+                <h3>Full-stack programers</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea deleniti magnam porro, quibusdam distinctio aut
+                    fuga reprehenderit aspernatur. Iste, nostrum tempora corrupti quaerat sequi accusamus quo expedita sunt
+                    facere neque.
                 </p>
             </div>
         </div>
