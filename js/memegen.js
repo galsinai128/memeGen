@@ -14,7 +14,9 @@ function renderImgs(imgs) {
     var strHtml = '';
     imgs.forEach(function (img) {
         strHtml += `<li><div class="list-item-container">
-        <div class="item-detalis flex space-around"><div>${img.keywords}</div></div><img id="${img.url}" 
+        <div class="item-detalis flex space-around">
+        <div>${img.keywords}</div>
+        </div><img id="${img.url}" 
         class="galery-img" src="${img.url}" onclick="openGen(this)"
          alt="No Pciture to displaye"></div></li>`
     });
@@ -29,18 +31,18 @@ function openGen(elPic) {
     document.querySelector('.about').classList.add('hide');
     document.querySelector('.about-item').classList.add('hide');
     document.querySelector('.canvas-container').classList.add('open-list');
-    
+
 
     elModal.classList.add('open-modal');
     toggleActive();
 
     var imgObj = findImg(elPic);
     createMeme(imgObj.id);
-    drawImg(elPic); 
+    drawImg(elPic);
 }
 
 function closeGen() {
-     document.querySelector('.meme-input-line').value = '';
+    document.querySelector('.meme-input-line').value = '';
     var elModal = document.querySelector('.modal');
     elModal.classList.remove('open-modal');
     document.querySelector('.hedaer-decoration').classList.remove('hide');
@@ -77,16 +79,17 @@ function filterImagesList(popularStr) {
         elFilter.value = '';
         return;
     }
+ 
     for (var i = 0; i < gImgs.length; i++) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
             if (filter === keyword) {
                 strHtml += `<li><div class="list-item-container">
-                 <img id="${gImgs[i].url}" 
-                class="galery-img" src="${gImgs[i].url}"
-                onclick="openGen(this)" alt="No Pciture to displaye">
-                            </div>
-                            </li>`
+                <div class="item-detalis flex space-around">
+                <div>${gImgs[i].keywords}</div>
+                </div><img id="${gImgs[i].url}" 
+                class="galery-img" src="${gImgs[i].url}" onclick="openGen(this)"
+                 alt="No Pciture to displaye"></div></li>`
             }
         }
     }
@@ -102,7 +105,7 @@ function renderPopularKeysList() {
     for (var i in gPopularKeywordMap) {
         var currKeyPopular = gPopularKeywordMap[i];
         if (currKeyPopular > 2) {
-            if (currKeyPopular <=18){
+            if (currKeyPopular <= 18) {
                 strHtml += `<li onclick="searchPopularItem(this.textContent)" class="popular-item" 
                             style="font-size:${currKeyPopular * 0.2}rem;">${i}</li>`
             }
@@ -165,7 +168,7 @@ function setIconAlign(selectedAlign) {
     }
 }
 
-function openMenu(elbtn){
+function openMenu(elbtn) {
     var elMenu = document.querySelector('.nav-list');
     elMenu.classList.toggle('open-list');
 
@@ -175,7 +178,7 @@ function openMenu(elbtn){
 }
 
 
-function OnMessageSubmitted(){
+function OnMessageSubmitted() {
     var mailStr = document.querySelector('.mail-massage-submition').value;
     var subjectStr = document.querySelector('.subject-massage-submition').value;
     var bodyStr = document.querySelector('.body-massage-submition').value;
