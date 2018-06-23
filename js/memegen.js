@@ -162,3 +162,11 @@ function openMenu(elbtn){
     elbtn.classList.toggle('fa-times');
 
 }
+
+
+function OnMessageSubmitted(){
+    var mailStr = document.querySelector('.mail-massage-submition').value;
+    var subjectStr = document.querySelector('.subject-massage-submition').value;
+    var bodyStr = document.querySelector('.body-massage-submition').value;
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=hexalcrop@gmail.com&su=${subjectStr}&body=${bodyStr}`);
+}
