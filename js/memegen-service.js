@@ -97,7 +97,10 @@ function mapImagesKeyWords(){
     saveToStorage('popular-keys',gPopularKeywordMap);
 }
 
-
+function setKeyInMap(str){
+    gPopularKeywordMap[str] =  gPopularKeywordMap[str] + 1;;
+    
+}
 
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))
@@ -106,4 +109,6 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     return JSON.parse(localStorage.getItem(key))
 }
+
+
 

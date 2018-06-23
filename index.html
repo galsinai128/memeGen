@@ -14,19 +14,15 @@
 </head>
 
 <body onload="init()">
-
     <header>
         <div class="logo">
         </div>
         <nav class="flex">
-
             <button onclick="openMenu(this)" class="btn btn-menu fa fa-bars"></button>
             <ul class="nav-list clean-list flex">
                 <li onclick="closeGen();toggleActive(this)">
                     <a class="flex align-items-center" href="#gallery">Gallery</a>
-
                 </li>
-
                 <li onclick="toggleActive(this)">
                     <a href="#about" class="flex align-items-center">About</a>
                     <div class="hedaer-decoration">
@@ -117,7 +113,6 @@
                         </li>
                         <li class="control-btn-item">
                             <div onclick="addNewLine()" class="new-line control-btn flex fa fa-plus-circle"></div>
-
                         </li>
                     </ul>
                     <ul class="control-btns-list clean-list flex justify-content-center">
@@ -130,13 +125,12 @@
                         <li class="control-btn-item">
                             <div onclick="TabLines()" class="control-btn flex">Tab</div>
                         </li>
-
                     </ul>
                 </div>
                 <div class="btn btn-down">
                     <span class="back-arrow flex fa fa-download"></span>
                     <div class="flex align-items-center space-around download-btn">
-                        <a href="#" onclick="downloadImg(this)">
+                        <a id="download" href="#" onclick="downloadImg(this)">
                             Download
                         </a>
                     </div>
@@ -147,12 +141,9 @@
 
     <main id="top" class="flex flex-dir-col justify-content-center align-items-center">
         <div class="filter-container flex flex-dir-col align-items-center">
-            <input onchange="filterImagesList()" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
-            <datalist id="keywords">
-
-            </datalist>
+            <input onchange="filterImagesList(this.value)" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
+            <datalist id="keywords"></datalist>
             <ul class="popular-searches clean-list flex space-around align-items-center">
-
             </ul>
             <!-- <div class="hexagon hexagon2" onclick="openGen(this)"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div> -->
             <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
@@ -164,7 +155,6 @@
     <section id="about" class="about flex justify-content-center">
         <div class="about-container flex flex-dir-col space-between">
             <div class="about-logo"></div>
-            <!-- <img src="img/other/ca-logo@2x.png" alt="no photo to display"> -->
             <div class="about-text-container">
                 <h1>Omer Sela & Gal Sinai</h1>
                 <h3>Full-stack programers</h3>

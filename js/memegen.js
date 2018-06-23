@@ -13,13 +13,9 @@ function renderImgs(imgs) {
     var elUlImgs = document.querySelector('.imgs-list');
     var strHtml = '';
     imgs.forEach(function (img) {
-        strHtml += `<li>
-                    <div class="list-item-container">
-                    <img id="${img.url}" class="galery-img" src="${img.url}" onclick="openGen(this)" alt="No Pciture to displaye">
-                    </div></li>`
-
-                    
-
+        strHtml += `<li><div class="list-item-container"><img id="${img.url}" 
+        class="galery-img" src="${img.url}" onclick="openGen(this)"
+         alt="No Pciture to displaye"></div></li>`
     });
     elUlImgs.innerHTML = strHtml;
 
@@ -47,8 +43,6 @@ function closeGen() {
     document.querySelector('.about').classList.remove('hide');
 
 }
-
-
 
 function renderOptionsForFilter() {
     var elFilter = document.querySelector('#keywords');
@@ -80,10 +74,12 @@ function filterImagesList(popularStr) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
             if (filter === keyword) {
-                strHtml += `<li><div class="list-item-container>
-                            <img id="${gImgs[i].url}" src="${gImgs[i].url}" 
-                            onclick="openGen(this)" alt="No Pciture to displaye">
-                            </div></li>`
+                strHtml += `<li><div class="list-item-container">
+                 <img id="${gImgs[i].url}" 
+                class="galery-img" src="${gImgs[i].url}"
+                onclick="openGen(this)" alt="No Pciture to displaye">
+                            </div>
+                            </li>`
             }
         }
     }
@@ -97,21 +93,24 @@ function renderPopularKeysList() {
     var elPopularItems = document.querySelector('.popular-searches');
     var strHtml = '';
     for (var i in gPopularKeywordMap) {
-        if (gPopularKeywordMap[i] > 2) {
-            if (gPopularKeywordMap[i] <=15){
+        var currKeyPopular = gPopularKeywordMap[i];
+        if (currKeyPopular > 2) {
+            if (currKeyPopular <=18){
                 strHtml += `<li onclick="searchPopularItem(this.textContent)" class="popular-item" 
-                            style="font-size:${gPopularKeywordMap[i] * 0.2}rem">${i}</li>`
+                            style="font-size:${currKeyPopular * 0.2}rem;">${i}</li>`
             }
             else {
                 strHtml += `<li onclick="searchPopularItem(this.textContent)" class="popular-item" 
-                            style="font-size:${15 * 0.2}rem">${i}</li>`
+                            style="font-size:${18 * 0.2}rem">${i}</li>`
             }
         }
     }
+    elPopularItems.innerHTM = '';
     elPopularItems.innerHTML = strHtml;
 }
 
 function searchPopularItem(str) {
+    setKeyInMap(str);
     filterImagesList(str);
 }
 
@@ -121,7 +120,6 @@ function renderNumLine(idx) {
     var strHtml = `Line Number:${idx + 1}`;
     elNumLine.innerHTML = strHtml;
 }
-
 
 function disableAddLine() {
     var elAddBtn = document.querySelector('.new-line').classList.add('disabled');
