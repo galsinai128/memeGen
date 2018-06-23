@@ -314,7 +314,7 @@ function toggleBold(el){
     currMeme.isBold = !currMeme.isBold;
     clearCanvas();
     drawText('', currMeme.line);
-    el.classList.toggle('control-btn-active');
+    // el.classList.toggle('control-btn-active');
 }
 
 function toggleShadow(el){
@@ -322,7 +322,7 @@ function toggleShadow(el){
     currMeme.isShadow = !currMeme.isShadow;
     clearCanvas();
     drawText('', currMeme.line);
-    el.classList.toggle('control-btn-active');
+    // el.classList.toggle('control-btn-active');
 }
 
 function downloadImg(elLink) {
