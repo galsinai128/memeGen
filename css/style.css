@@ -447,23 +447,53 @@ color:inherit;
 
 
 .get-in-touch{
-    color: white;
+    padding: 10px 0;
+    color: #bebebe;
     background-color: #323232;
     font-family: Maven Pro,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.get-in-touch h1 {
+    margin:0;
+    font-size: 30px;
+    font-weight: 400;
+    color: #e0e0e0;
+}
+
+.get-in-touch h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 400;
+}
 
 .get-in-touch-container{
-    width: 80%;
+    padding: 0 20px;
 }
 
 .get-in-touch-form{
     width: 80%;
 }
 
-.get-in-touch-form h1,.get-in-touch-form h4{
-    margin-bottom: 0;
+.sub-contact {
+ display: block;
 }
 
+
+@media(min-width:500px) {
+    .sub-contact {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(12,1fr);
+        grid-template-rows: repeat(12,1fr);
+    }
+    .sub-contact .form {
+        grid-column: 9 span;
+        grid-row: 12 span;
+    }
+    .sub-contact .get-in-touch-detail {
+        grid-row: 12 span;
+        grid-column: 3 span;
+    }
+}
 
 
 .get-in-touch-form input{
@@ -502,13 +532,17 @@ color:inherit;
 }
 
 .get-in-touch-detail{
-    width: 20%;
-    padding: 90px 0 0 10px;
     font-size: 0.7rem;
 }
 
 .get-in-touch-detail-p{
     margin-bottom: 2rem;
+    line-height: 21.56px;
+}
+
+.get-in-touch-detail-p span {
+    font-weight: 900;
+    color: #e0e0e0;
 }
 
 .get-in-touch-detail-logos div{
@@ -590,4 +624,11 @@ path{
     }
 .upload-file {
     align-self: self-end;
+}
+
+footer {
+    height: 40px;
+    padding: 0 10px;
+    color: #454545;
+    background-color: #222222;
 }

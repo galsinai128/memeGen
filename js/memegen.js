@@ -26,6 +26,8 @@ function openGen(elPic) {
     document.querySelector('.hedaer-decoration').classList.add('hide');
     document.querySelector('main').classList.toggle('hide');
     document.querySelector('.about').classList.add('hide');
+    document.querySelector('.about-item').classList.add('hide');
+
     elModal.classList.add('open-modal');
     toggleActive();
 
@@ -41,6 +43,8 @@ function closeGen() {
     document.querySelector('.hedaer-decoration').classList.remove('hide');
     document.querySelector('main').classList.remove('hide');
     document.querySelector('.about').classList.remove('hide');
+    document.querySelector('.about-item').classList.remove('hide');
+    
 
 }
 

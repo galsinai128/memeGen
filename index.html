@@ -8,8 +8,7 @@
     <link rel="shortcut icon" href="img/logo/icon.png" />
     <link rel="stylesheet" href="css/style.css" />
     <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
-        crossorigin="anonymous"></script> -->
+
     <title>MemeGen</title>
 </head>
 
@@ -23,14 +22,14 @@
                 <li onclick="closeGen();toggleActive(this)">
                     <a class="flex align-items-center" href="#gallery">Gallery</a>
                 </li>
-                <li onclick="toggleActive(this)">
-                    <a href="#about" class="flex align-items-center">About</a>
+                <li class="about-item" onclick="toggleActive(this)">
+                    <a  href="#about" class="flex align-items-center">About</a>
                     <div class="hedaer-decoration">
                         <img src="img/other/hex.png" />
                     </div>
                 </li>
                 <li>
-                    <a class="flex align-items-center">Get in touch</a>
+                    <a class="flex align-items-center" href="#contact">Get in touch</a>
                 </li>
             </ul>
         </nav>
@@ -178,11 +177,13 @@
             </div>
         </div>
     </section>
-    <section class="get-in-touch flex justify-content-center">
+    <section id="contact" class="get-in-touch flex justify-content-center">
         <div class="get-in-touch-container flex justify-content-center">
             <div class="get-in-touch-form flex flex-dir-col">
                 <h1>Get in touch</h1>
                 <h4>In order to get in touch use the contact form below:</h4>
+                <div class="sub-contact">
+                <div class="form flex flex-dir-col">
                 <input type="text" placeholder="Name (Required)" class="get-in-touch-input">
                 <input type="text" placeholder="Email (Required)" class="get-in-touch-input mail-massage-submition">
                 <input type="text" placeholder="Subject" class="get-in-touch-input subject-massage-submition">
@@ -190,10 +191,11 @@
                 <div class="send-btn-container">
                     <button class="send-btn" onclick="OnMessageSubmitted()">SEND</button>
                 </div>
-            </div>
+                </div>
+            
             <div class="get-in-touch-detail flex flex-dir-col">
                 <div class="get-in-touch-detail-p">
-                    <span style="font-weight: bold">Lorem ipsum:</span> dolor sit amet consectetur adipisicing elit. Ex culpa ipsa laboriosam, a id eum soluta, dolores voluptatem est placeat quisquam, cum nemo iste aut ut reiciendis eligendi. Non, aut.
+                    <span>Lorem ipsum:</span> dolor sit amet consectetur adipisicing elit. Ex culpa ipsa laboriosam, a id eum soluta, dolores voluptatem est placeat quisquam, cum nemo iste aut ut reiciendis eligendi. Non, aut.
                 </div>
                 <div class="get-in-touch-detail-logos">
                     <div ><i class="fa fa-map-marker"> </i>  Elm St. 14/05 Lost City</div>
@@ -202,10 +204,12 @@
                 </div>
             </div>
         </div>
+        </div>
+        </div>
     </section>
-    <footer></footer>
-
-
+    <footer class="flex align-items-center">
+        &copy; 2018 gal&omer
+    </footer>
 
     <script src="js/utils-service.js"></script>
     <script src="js/memegen-service.js"></script>
