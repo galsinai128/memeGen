@@ -24,6 +24,7 @@ body {
 
 nav a, button {
     min-width: 48px;
+    cursor: pointer;
 }
 
 /*dont strech my media*/
@@ -99,11 +100,35 @@ main {
     height: 200px;
     width: 200px;
     display: flex;
+    position: relative;
+    transition: all 0.4s;
+}
+.list-item-container:hover{
+    box-shadow: 0 0 5px #080808;
 }
 
-.galery-img:hover{
-    height: 205px;
+.item-detalis {
+    position: absolute;
+    background: rgb(0,0,0,0.4);
+    color: #e0e0e0;
+    align-items: center;
+    top: 50%;
+    min-height: 50px;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.4s;
 }
+.item-detalis>div {
+    width: 80%;
+    word-wrap: break-word;
+}
+.imgs-list li:hover .item-detalis {
+    opacity: 1;
+    z-index: 2;
+}
+
+
 
 /* canvas */
 
@@ -113,16 +138,19 @@ main {
     background-color: #404040;
     opacity: 0;
     display: none;
-    transition: all 0.4s;
+    transition: opacity 0.4s;
 }
 
 .open-modal {
     opacity: 1;
     display: block;
+   
 }
 
 .canvas-container {
     align-items: center;
+    opacity: 0;
+    transition: opacity 0.6s;
 }
 
 .meme-img {
@@ -131,11 +159,11 @@ main {
     flex-direction: column;
 }
 
+
 .btn {
     width: 100%;
     height: 30px;
     background-color: #2eb398;
-    /* Green */
     border: none;
     color: white;
     cursor: pointer;
@@ -528,7 +556,7 @@ a:visited {
 
 .send-btn {
     background-color: #2eb398;
-    color: white;
+    color: #d7fcf5;
     border: none;
     width: 70px;
     height: 40px;

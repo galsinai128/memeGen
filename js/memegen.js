@@ -13,7 +13,8 @@ function renderImgs(imgs) {
     var elUlImgs = document.querySelector('.imgs-list');
     var strHtml = '';
     imgs.forEach(function (img) {
-        strHtml += `<li><div class="list-item-container"><img id="${img.url}" 
+        strHtml += `<li><div class="list-item-container">
+        <div class="item-detalis flex space-around"><div>${img.keywords}</div></div><img id="${img.url}" 
         class="galery-img" src="${img.url}" onclick="openGen(this)"
          alt="No Pciture to displaye"></div></li>`
     });
@@ -27,6 +28,8 @@ function openGen(elPic) {
     document.querySelector('main').classList.toggle('hide');
     document.querySelector('.about').classList.add('hide');
     document.querySelector('.about-item').classList.add('hide');
+    document.querySelector('.canvas-container').classList.add('open-list');
+    
 
     elModal.classList.add('open-modal');
     toggleActive();
@@ -44,7 +47,7 @@ function closeGen() {
     document.querySelector('main').classList.remove('hide');
     document.querySelector('.about').classList.remove('hide');
     document.querySelector('.about-item').classList.remove('hide');
-    
+    document.querySelector('.canvas-container').classList.remove('open-list');
 
 }
 
