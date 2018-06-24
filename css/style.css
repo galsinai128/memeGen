@@ -95,6 +95,8 @@ main {
     cursor: pointer;
     margin: 0 0 10px 10px;
 }
+
+
 .galery-img {
     object-fit: cover;
 }
@@ -104,13 +106,15 @@ main {
     width: 200px;
     display: flex;
     position: relative;
-    transition: all 0.4s;
+    transition: all 0.3s;
 }
-.list-item-container:hover{
-    box-shadow: 0 0 5px #080808;
+.list-item-container:hover, .list-item-container:active{
+    box-shadow: 0 0 3px 3px #191919;
+    transform: scale(1.2,1.2);
+    z-index: 3;
 }
 
-.item-detalis {
+/* .item-detalis {
     position: absolute;
     background: rgb(0,0,0,0.4);
     color: #e0e0e0;
@@ -121,15 +125,15 @@ main {
     opacity: 0;
     z-index: -1;
     transition: all 0.4s;
-}
-.item-detalis>div {
+} */
+/* .item-detalis>div {
     width: 80%;
     word-wrap: break-word;
-}
-.imgs-list li:hover .item-detalis {
+} */
+/* .imgs-list li:hover .item-detalis {
     opacity: 1;
     z-index: 2;
-}
+} */
 
 
 

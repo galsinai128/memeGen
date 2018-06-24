@@ -8,15 +8,14 @@ function init() {
     renderOptionsForFilter();
     renderPopularKeysList();
 }
-
+{/* <div class="item-detalis flex space-around">
+<div>${img.keywords}</div> */}
 function renderImgs(imgs) {
     var elUlImgs = document.querySelector('.imgs-list');
     var strHtml = '';
     imgs.forEach(function (img) {
         strHtml += `<li><div class="list-item-container">
-        <div class="item-detalis flex space-around">
-        <div>${img.keywords}</div>
-        </div><img id="${img.url}" 
+     <img id="${img.url}" 
         class="galery-img" src="${img.url}" onclick="openGen(this)"
          alt="No Pciture to displaye"></div></li>`
     });
@@ -79,15 +78,14 @@ function filterImagesList(popularStr) {
         elFilter.value = '';
         return;
     }
- 
+    // <div class="item-detalis flex space-around">
+    // <div>${gImgs[i].keywords}</div>
     for (var i = 0; i < gImgs.length; i++) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
             if (filter === keyword) {
                 strHtml += `<li><div class="list-item-container">
-                <div class="item-detalis flex space-around">
-                <div>${gImgs[i].keywords}</div>
-                </div><img id="${gImgs[i].url}" 
+              <img id="${gImgs[i].url}" 
                 class="galery-img" src="${gImgs[i].url}" onclick="openGen(this)"
                  alt="No Pciture to displaye"></div></li>`
             }
