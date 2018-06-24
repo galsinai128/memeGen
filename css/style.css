@@ -289,9 +289,9 @@ main {
     .meme-img{
         margin:  0 20px 0 0;
     }
-    .align-container:hover:not(:active) .align-menu, .font-container:hover:not(:active) .font-menu {
+    /* .align-container:hover:not(:active) .align-menu, .font-container:hover:not(:active) .font-menu {
         display: block;
-    }
+    } */
 }
 
 
