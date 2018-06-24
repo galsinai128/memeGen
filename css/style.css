@@ -639,6 +639,7 @@ path {
         opacity: 1;
         top: 0;
         box-shadow: none;
+        z-index: 2;
     }
     .nav-list li:not(:last-child) {
         box-shadow: none;
