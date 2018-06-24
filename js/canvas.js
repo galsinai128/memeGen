@@ -193,6 +193,28 @@ function moveLeft(size) {
     }
 }
 
+function moveUp(size) {
+    size = size ? size : 5
+    var currMeme = gMeme.txts[gCurrLineIdx];
+    if (currMeme.coorY > 40) {
+        gMeme.txts[gCurrLineIdx].coorY = currMeme.coorY - size;
+        clearCanvas();
+        renderText();
+    }
+}
+
+function moveDown() {
+    var currMeme = gMeme.txts[gCurrLineIdx];
+    // var currTxtWidth = ctx.measureText(currMeme.line).width;
+    if (currMeme.coorY  < canvas.height - 20) {
+        gMeme.txts[gCurrLineIdx].coorY = currMeme.coorY + 5;
+        clearCanvas();
+        renderText();
+    }
+
+}
+
+
 function calcCenter(str) {
     var txtLen = ctx.measureText(str).width;
     gAlignCenter = (canvas.width - txtLen) / 2;
