@@ -46,7 +46,7 @@
                 <div class="box-control container">
                     <h4 class="line-idx"></h4>
 
-                    <input type="text" class="meme-input-line" oninput="drawText(event,this.value)">
+                    <input  type="text" class="meme-input-line" oninput="drawText(event,this.value)">
                     <ul class="control-btns-list clean-list flex justify-content-center">
                         <li class="control-btn-item">
                             <div class="control-btn flex fa fa-bold" onclick="toggleBold(this)"></div>
@@ -63,7 +63,7 @@
                     </ul>
                     <ul class="control-btns-list clean-list flex justify-content-center">
                         <li>
-                            <div onclick="toggleMenu('font-menu')" class="font-container control-btn flex fa fa-font">
+                            <div onfocus="test()" onclick="toggleMenu('font-menu')" class="font-container control-btn flex fa fa-font">
                                 <ul class="font-menu clean-list">
                                     <li>
                                         <button onclick="setFont('Impact')" class="control-btn" style="font-family: Impact">Impact</button>

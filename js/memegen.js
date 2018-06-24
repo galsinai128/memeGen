@@ -14,12 +14,13 @@ function renderImgs(imgs) {
     var strHtml = '';
     imgs.forEach(function (img) {
         strHtml += `<li>
-                        <div class="list-item-container">
-                            <img id="${img.url}" class="galery-img" src="${img.url}" onclick="openGen(this)" alt="No Pciture to displaye">
-                            <div class="corner-1"></div>
-		                    <div class="corner-2"></div>	
-                        </div>
-                    </li>`
+            <div  class="hexagon list-item-container"
+            >
+            <img id="${img.url}" 
+            class="galery-img" src="${img.url}" onclick="openGen(this)"
+            alt="No Pciture to displaye">
+            </div>
+        </li>`
     });
     elUlImgs.innerHTML = strHtml;
 
@@ -88,13 +89,19 @@ function filterImagesList(popularStr) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
             if (filter === keyword) {
-                strHtml += `<li><div class="list-item-container">
-              <img id="${gImgs[i].url}" 
-                class="galery-img" src="${gImgs[i].url}" onclick="openGen(this)"
-                 alt="No Pciture to displaye"></div></li>`
+                strHtml += 
+                `<li>
+            <div  class="hexagon list-item-container"
+            >
+            <img id="${gImgs[i].url}" 
+            class="galery-img" src="${gImgs[i].url}" onclick="openGen(this)"
+            alt="No Pciture to displaye">
+            </div>
+        </li>`
             }
         }
     }
+   
     elUlImgs.innerHTML = strHtml;
     elFilter.value = '';
     saveToStorage('popular-keys', gPopularKeywordMap);
@@ -204,3 +211,5 @@ function toggleMenu(className){
     }    
     el.classList.toggle('display-block');
 }
+
+
