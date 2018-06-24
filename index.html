@@ -65,7 +65,7 @@
                             <div class="control-btn flex  fa fa-plus" onclick="enlargeText()"></div>
                         </li>
                         <li class="control-btn-item">
-                            <input class="control-btn" value="#ffffff" oninput="colorChange(this)" type="color" id="txtColor">
+                            <input class="control-btn color" oninput="colorChange(this)" type="color" id="txtColor">
                         </li>
                     </ul>
                     <ul class="control-btns-list clean-list flex justify-content-center">
@@ -155,23 +155,28 @@
 
 
     <main id="top" class="flex flex-dir-col justify-content-center align-items-center">
-        <form action="#">
-            <div class="input-file-container">
-                <input class="input-file" type="file" name="image" onchange="onFileInputChange(event)" />
-                <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
-            </div>
-            <p class="file-return"></p>
-        </form>
-        <div class="share-container"></div>
 
-        <div class="filter-container flex flex-dir-col align-items-center">
-            <input onchange="filterImagesList(this.value)" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
-            <datalist id="keywords"></datalist>
-            <ul class="popular-searches clean-list flex space-around align-items-center">
-            </ul>
-            <!-- <div class="hexagon hexagon2" onclick="openGen(this)"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div> -->
-            <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
+        <div class="share-container"></div>
+        <div class="feature flex">
+                <div class="upload-filter-container flex flex-dir-col">
+                        <form class="form-upload" action="#">
+                            <div class="input-file-container">
+                                <input class="input-file" type="file" name="image" onchange="onFileInputChange(event)" />
+                                <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
+                            </div>
+                            <p class="file-return"></p>
+                        </form>
+                        <input onchange="filterImagesList(this.value)" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
+                        <datalist id="keywords"></datalist>
+                    </div>
+                <!-- <div class="filter-container flex flex-dir-col align-items-center"> -->
+                    <ul class="popular-searches clean-list flex space-around align-items-center">
+                    </ul>
+                    <!-- <div class="hexagon hexagon2" onclick="openGen(this)"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div> -->
+                    <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
+                <!-- </div> -->
         </div>
+       
         <ul id="gallery" class="imgs-list clean-list">
 
         </ul>
@@ -238,6 +243,8 @@
             </div>
         </div>
     </section>
+
+
     <footer class="flex align-items-center">
         &copy; 2018 gal&omer
     </footer>
