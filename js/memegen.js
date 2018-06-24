@@ -27,20 +27,20 @@ function renderImgs(imgs) {
 }
 
 function openGen(elPic) {
-    gCurrLineIdx =0;
+    gCurrLineIdx = 0;
     var elModal = document.querySelector('.modal');
     document.querySelector('.hedaer-decoration').classList.add('hide');
     document.querySelector('main').classList.toggle('hide');
     document.querySelector('.about').classList.add('hide');
     document.querySelector('.about-item').classList.add('hide');
     document.querySelector('.canvas-container').classList.add('open-list');
-    document.querySelector('.color').value ="#ffffff" ;
+    document.querySelector('.color').value = "#ffffff";
 
 
     elModal.classList.add('open-modal');
     toggleActive();
 
-    var imgObj = findImg(elPic,null);
+    var imgObj = findImg(elPic, null);
 
     createMeme(imgObj.id);
     drawImg(elPic);
@@ -89,8 +89,8 @@ function filterImagesList(popularStr) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
             if (filter === keyword) {
-                strHtml += 
-                `<li>
+                strHtml +=
+                    `<li>
             <div  class="hexagon list-item-container"
             >
             <img id="${gImgs[i].url}" 
@@ -101,7 +101,7 @@ function filterImagesList(popularStr) {
             }
         }
     }
-   
+
     elUlImgs.innerHTML = strHtml;
     elFilter.value = '';
     saveToStorage('popular-keys', gPopularKeywordMap);
@@ -201,15 +201,29 @@ function onFileInputChange(ev) {
 
 
 
-function toggleMenu(className){
-    var el = document.querySelector('.'+className);
-    if (className ==='align-menu'){
-     document.querySelector('.font-menu').classList.remove('display-block');
+function toggleMenu(className, isClick) {
+    var el = document.querySelector('.' + className);
+    if (className === 'align-menu') {
+        document.querySelector('.font-menu').classList.remove('display-block');
     }
     else {
         document.querySelector('.align-menu').classList.remove('display-block');
-    }    
-    el.classList.toggle('display-block');
+    }
+    if (!isClick) {
+        el.classList.toggle('display-block');
+
+    }
 }
 
 
+function clearDropDown(ev) {
+    var elAlign = document.querySelector('.align-container');
+    var elFont = document.querySelector('.font-container');
+
+    if (ev.target !== elAlign) {
+        document.querySelector('.align-menu').classList.remove('display-block');
+    } if (ev.target !== elFont) {
+        document.querySelector('.font-menu').classList.remove('display-block');
+
+    }
+}

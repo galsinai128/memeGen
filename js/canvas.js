@@ -19,7 +19,7 @@ function initCanvas() {
     ctx = canvas.getContext('2d');
 
     var currLine = gMeme.txts[gCurrLineIdx];
-    
+
     setAlignCoords();
 
     renderNumLine(gCurrLineIdx);
@@ -49,10 +49,10 @@ function drawImg(imgUrl) {
         gCurrAlign = gAlignCenter;
         gBottomTbY = (canvas.height - 50) - 10;
         gBottomTbX = canvas.width - 20;
-        img.crossOrigin="Anonymous"; 
+        img.crossOrigin = "Anonymous";
         img.onload = function () {
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-              };
+        };
 
     } else {
         ctx.drawImage(currImg, 0, 0, canvas.width, canvas.height);
@@ -82,7 +82,7 @@ function drawText(ev, txtStr) {
         gMeme.txts[gCurrLineIdx].align = center;
         gCurrAlign = center;
     }
-    
+
     //check right 
     if (currMeme.align + currTxtWidth > canvas.width - 10) {
         var shiftWidth = ctx.measureText(txtStr[txtStr.length - 1]).width;
@@ -114,7 +114,7 @@ function renderText(inputValue) {
         else ctx.shadowBlur = 0;
 
         ctx.fillText(currLine.line, currLine.align, currLine.coorY);
-       ctx.strokeText(currLine.line, currLine.align, currLine.coorY);
+        ctx.strokeText(currLine.line, currLine.align, currLine.coorY);
     }
 
 }
@@ -206,7 +206,7 @@ function moveUp(size) {
 function moveDown() {
     var currMeme = gMeme.txts[gCurrLineIdx];
     // var currTxtWidth = ctx.measureText(currMeme.line).width;
-    if (currMeme.coorY  < canvas.height - 20) {
+    if (currMeme.coorY < canvas.height - 20) {
         gMeme.txts[gCurrLineIdx].coorY = currMeme.coorY + 5;
         clearCanvas();
         renderText();
