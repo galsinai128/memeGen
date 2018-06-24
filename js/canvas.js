@@ -5,11 +5,12 @@ var ctx;
 var currImg = null;
 var gBottomTbY;
 var gBottomTbX;
-var gTbHeight = 50;
+// var gTbHeight = 50;
 
-var LEFT;
-var CENTER;
-var RIGHT;
+var gAlignLeft;
+var gAlignCenter;
+var gAlignRight;
+var gCurrAlign;
 var gCurrLineIdx = 0;
 
 function initCanvas() {
@@ -19,6 +20,7 @@ function initCanvas() {
     // canvas.width = 350;
     // canvas.height = 350;
     var currLine = gMeme.txts[gCurrLineIdx];
+    
     setAlignCoords();
 
     renderNumLine(gCurrLineIdx);
@@ -26,13 +28,13 @@ function initCanvas() {
     ctx.textAlign = currLine.align;
     ctx.fillStyle = currLine.color;
     ctx.stroleStyle = 'black';
-    ctx.shadowColor='black';
+    ctx.shadowColor = 'black';
 }
 
 function setAlignCoords() {
-    LEFT = 15;
-    CENTER = (canvas.width / 2) - 20;
-    RIGHT = (canvas.width / 2) + 150;
+    gAlignLeft = 15;
+    gAlignCenter = (canvas.width / 2) - 20;
+    gAlignRight = (canvas.width / 2) + 150;
 }
 
 function drawImg(imgUrl) {
@@ -44,22 +46,24 @@ function drawImg(imgUrl) {
         img.src = imgUrl.src;
         canvas.width = img.width;
         canvas.height = img.height;
+        gMeme.txts[gCurrLineIdx].align = gAlignCenter;
+        gCurrAlign = gAlignCenter;
         gBottomTbY = (canvas.height - 50) - 10;
         gBottomTbX = canvas.width - 20;
         img.onload = function () {
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                // var sourceX = 150;
-                // var sourceY = 0;
-                // var sourceWidth = img.width;
-                // var sourceHeight = img.height;
-                // var destWidth = sourceWidth;
-                // var destHeight = sourceHeight;
-                // var destX = canvas.width / 2 - destWidth / 2;
-                // var destY = canvas.height / 2 - destHeight / 2;
-                // ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
-              };
+            // var sourceX = 150;
+            // var sourceY = 0;
+            // var sourceWidth = img.width;
+            // var sourceHeight = img.height;
+            // var destWidth = sourceWidth;
+            // var destHeight = sourceHeight;
+            // var destX = canvas.width / 2 - destWidth / 2;
+            // var destY = canvas.height / 2 - destHeight / 2;
+            // ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+        };
 
-        
+
     } else {
         ctx.drawImage(currImg, 0, 0, canvas.width, canvas.height);
     }
@@ -82,10 +86,17 @@ function drawText(ev, txtStr) {
     if (ev.inputType === 'deleteContentBackward' && txtStr !== ' ') {
         clearCanvas();
     }
-
-    if(currMeme.align + currTxtWidth > canvas.width - 10 ) {
+    //check center
+    if (gCurrAlign === currMeme.align) {
+        var center = calcCenter(txtStr)
+        gMeme.txts[gCurrLineIdx].align = center;
+        gCurrAlign = center;
+    }
+    
+    //check right 
+    if (currMeme.align + currTxtWidth > canvas.width - 10) {
         var shiftWidth = ctx.measureText(txtStr[txtStr.length - 1]).width;
-        moveLeft(shiftWidth );
+        moveLeft(shiftWidth);
     }
 
     if ((currTxtWidth >= gBottomTbX - 20)) {
@@ -103,14 +114,14 @@ function renderText(inputValue) {
     for (var i = 0; i < gMeme.txts.length; i++) {
         var currLine = gMeme.txts[i];
         ctx.fillStyle = currLine.color;
-        
+
         //BOLD
         if (currLine.isBold) ctx.font = `bold ${currLine.size}px ${currLine.font}`;
         else ctx.font = `${currLine.size}px ${currLine.font}`;
-        
+
         //SHADOW
-        if (currLine.isShadow) ctx.shadowBlur=7;
-        else ctx.shadowBlur=0;
+        if (currLine.isShadow) ctx.shadowBlur = 7;
+        else ctx.shadowBlur = 0;
 
         ctx.fillText(currLine.line, currLine.align, currLine.coorY);
         ctx.strokeText(currLine.line, currLine.align, currLine.coorY);
@@ -168,20 +179,6 @@ function onCanvasClick(ev) {
         renderText();
     }
 
-
-    // if ((x > 10 && x < gBottomTbX) &&
-    //     (y > gTbHeight && y > gBottomTbY)) {
-    //     gtopTxt = elInputTxt.value;
-    //     elInputTxt.value = gBottomTxt;
-    //     gPosTxt = gBottomTbY + 35;
-
-    // } else if ((x > 10 && x < gBottomTbX) &&
-    //     (y > 10 && y < gTbHeight + 20)) {
-    //     gBottomTxt = elInputTxt.value;
-    //     elInputTxt.value = gtopTxt;
-    //     gPosTxt = 50;
-    // }
-
 }
 
 function moveRight() {
@@ -196,13 +193,19 @@ function moveRight() {
 }
 
 function moveLeft(size) {
-    size = size ? size :5
+    size = size ? size : 5
     var currMeme = gMeme.txts[gCurrLineIdx];
     if (currMeme.align > 10) {
         gMeme.txts[gCurrLineIdx].align = currMeme.align - size;
         clearCanvas();
         renderText();
     }
+}
+
+function calcCenter(str) {
+    var txtLen = ctx.measureText(str).width;
+    gAlignCenter = (canvas.width - txtLen) / 2;
+    return gAlignCenter;
 }
 
 function TabLines() {
@@ -245,9 +248,7 @@ function deleteLine() {
     }
 }
 
-function findLineIdx(coor) {
 
-}
 
 function reduceText() {
     resizeText(false);
@@ -272,20 +273,21 @@ function resizeText(isPlus) {
 function setAlign(val) {
     var currMeme = gMeme.txts[gCurrLineIdx];
     var txtLen = ctx.measureText(currMeme.line).width;
-    var icon  = val;
+    var icon = val;
     switch (val) {
         case 'L':
-        icon = 'left';
-            val = LEFT
+            icon = 'left';
+            val = gAlignLeft
             break;
         case 'C':
-        icon = 'center';
-            val = CENTER;
+            icon = 'center';
+            val = calcCenter(currMeme.line);
+            gCurrAlign = val;
             break;
         case 'R':
-        icon = 'right';
-            RIGHT = (canvas.width - 10) - txtLen;
-            val = RIGHT
+            icon = 'right';
+            gAlignRight = (canvas.width - 10) - txtLen;
+            val = gAlignRight;
             break;
     }
     currMeme.align = val;
@@ -294,7 +296,7 @@ function setAlign(val) {
     drawText('', currMeme.line);
 }
 
-function setFont(val){
+function setFont(val) {
     var currMeme = gMeme.txts[gCurrLineIdx];
     currMeme.font = val;
     clearCanvas();
@@ -309,25 +311,23 @@ function colorChange(el) {
     drawText('', currMeme.line);
 }
 
-function toggleBold(el){
+function toggleBold(el) {
     var currMeme = gMeme.txts[gCurrLineIdx];
     currMeme.isBold = !currMeme.isBold;
     clearCanvas();
     drawText('', currMeme.line);
-    // el.classList.toggle('control-btn-active');
 }
 
-function toggleShadow(el){
+function toggleShadow(el) {
     var currMeme = gMeme.txts[gCurrLineIdx];
     currMeme.isShadow = !currMeme.isShadow;
     clearCanvas();
     drawText('', currMeme.line);
-    // el.classList.toggle('control-btn-active');
 }
 
 function downloadImg(elLink) {
     var currImgId = gMeme.selectedImgid;
-    var currImg = findImg('',currImgId);
+    var currImg = findImg('', currImgId);
     elLink.download = `img/${currImg.url}.jpg`;
     var imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent;

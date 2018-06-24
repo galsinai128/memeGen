@@ -30,6 +30,7 @@ function openGen(elPic) {
     document.querySelector('.about').classList.add('hide');
     document.querySelector('.about-item').classList.add('hide');
     document.querySelector('.canvas-container').classList.add('open-list');
+    document.querySelector('.color').value ="#ffffff" ;
 
 
     elModal.classList.add('open-modal');

@@ -23,7 +23,7 @@
                     <a class="flex align-items-center" href="#gallery">Gallery</a>
                 </li>
                 <li class="about-item" onclick="toggleActive(this)">
-                    <a  href="#about" class="flex align-items-center">About</a>
+                    <a href="#about" class="flex align-items-center">About</a>
                     <div class="hedaer-decoration">
                         <img src="img/other/hex.png" />
                     </div>
@@ -59,7 +59,7 @@
                             <div class="control-btn flex  fa fa-plus" onclick="enlargeText()"></div>
                         </li>
                         <li class="control-btn-item">
-                            <input class="control-btn" value="#ffffff" oninput="colorChange(this)" type="color" id="txtColor">
+                            <input class="control-btn color" oninput="colorChange(this)" type="color" id="txtColor">
                         </li>
                     </ul>
                     <ul class="control-btns-list clean-list flex justify-content-center">
@@ -139,23 +139,28 @@
     </div>
 
     <main id="top" class="flex flex-dir-col justify-content-center align-items-center">
-            <form action="#">
-                    <div class="input-file-container">  
-                       <input class="input-file" type="file" name="image" onchange="onFileInputChange(event)" />
-                      <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
-                    </div>
-                    <p class="file-return"></p>
-                  </form>
-            <div class="share-container"></div>
 
-        <div class="filter-container flex flex-dir-col align-items-center">
-            <input onchange="filterImagesList(this.value)" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
-            <datalist id="keywords"></datalist>
-            <ul class="popular-searches clean-list flex space-around align-items-center">
-            </ul>
-            <!-- <div class="hexagon hexagon2" onclick="openGen(this)"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div> -->
-            <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
+        <div class="share-container"></div>
+        <div class="feature flex">
+                <div class="upload-filter-container flex flex-dir-col">
+                        <form class="form-upload" action="#">
+                            <div class="input-file-container">
+                                <input class="input-file" type="file" name="image" onchange="onFileInputChange(event)" />
+                                <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
+                            </div>
+                            <p class="file-return"></p>
+                        </form>
+                        <input onchange="filterImagesList(this.value)" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
+                        <datalist id="keywords"></datalist>
+                    </div>
+                <!-- <div class="filter-container flex flex-dir-col align-items-center"> -->
+                    <ul class="popular-searches clean-list flex space-around align-items-center">
+                    </ul>
+                    <!-- <div class="hexagon hexagon2" onclick="openGen(this)"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div> -->
+                    <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
+                <!-- </div> -->
         </div>
+       
         <ul id="gallery" class="imgs-list clean-list">
 
         </ul>
@@ -193,28 +198,33 @@
                 <h1>Get in touch</h1>
                 <h4>In order to get in touch use the contact form below:</h4>
                 <div class="sub-contact">
-                <div class="form flex flex-dir-col">
-                <input type="text" placeholder="Name (Required)" class="get-in-touch-input">
-                <input type="text" placeholder="Email (Required)" class="get-in-touch-input mail-massage-submition">
-                <input type="text" placeholder="Subject" class="get-in-touch-input subject-massage-submition">
-                <input type="text" placeholder="Write your message here..." class="write-your-message body-massage-submition">
-                <div class="send-btn-container">
-                    <button class="send-btn" onclick="OnMessageSubmitted()">SEND</button>
-                </div>
-                </div>
-            
-            <div class="get-in-touch-detail flex flex-dir-col">
-                <div class="get-in-touch-detail-p">
-                    <span>Lorem ipsum:</span> dolor sit amet consectetur adipisicing elit. Ex culpa ipsa laboriosam, a id eum soluta, dolores voluptatem est placeat quisquam, cum nemo iste aut ut reiciendis eligendi. Non, aut.
-                </div>
-                <div class="get-in-touch-detail-logos">
-                    <div ><i class="fa fa-map-marker"> </i>  Elm St. 14/05 Lost City</div>
-                    <div ><i class="fa fa-phone"> </i>  + 3582 331 86 35</div>
-                    <div ><i class="fa fa-envelope"> </i>  hexalcrop@gmail.com</div>
+                    <div class="form flex flex-dir-col">
+                        <input type="text" placeholder="Name (Required)" class="get-in-touch-input">
+                        <input type="text" placeholder="Email (Required)" class="get-in-touch-input mail-massage-submition">
+                        <input type="text" placeholder="Subject" class="get-in-touch-input subject-massage-submition">
+                        <input type="text" placeholder="Write your message here..." class="write-your-message body-massage-submition">
+                        <div class="send-btn-container">
+                            <button class="send-btn" onclick="OnMessageSubmitted()">SEND</button>
+                        </div>
+                    </div>
+
+                    <div class="get-in-touch-detail flex flex-dir-col">
+                        <div class="get-in-touch-detail-p">
+                            <span>Lorem ipsum:</span> dolor sit amet consectetur adipisicing elit. Ex culpa ipsa laboriosam, a
+                            id eum soluta, dolores voluptatem est placeat quisquam, cum nemo iste aut ut reiciendis eligendi.
+                            Non, aut.
+                        </div>
+                        <div class="get-in-touch-detail-logos">
+                            <div>
+                                <i class="fa fa-map-marker"> </i> Elm St. 14/05 Lost City</div>
+                            <div>
+                                <i class="fa fa-phone"> </i> + 3582 331 86 35</div>
+                            <div>
+                                <i class="fa fa-envelope"> </i> hexalcrop@gmail.com</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
         </div>
     </section>
     <footer class="flex align-items-center">

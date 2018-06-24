@@ -81,6 +81,7 @@ img, embed, video, object {
 
 main {
     padding: 10px;
+    position: relative;
     margin: 20px 0 0 0;
 }
 
@@ -428,7 +429,8 @@ a:visited {
     background-color: orange;
     margin: 0 0 10px;
     padding: 5px;
-    max-width: 500px;
+    width: 100%;
+    /* max-width: 500px; */
     min-height: 100px;
     flex-wrap: wrap;
 }
@@ -675,17 +677,41 @@ footer {
     background-color: #222222;
 }
 
+/* filter +upload div */
+
+.feature {
+    align-self: baseline;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-filter-container {
+    margin: 0 10px 0 0;
+}
+ @media (min-width:500px) {
+    .feature {
+        flex-direction: row;
+        align-items: stretch;
+    }
+   
+ }
+
 /* upload input */
+.form-upload {
+    margin:0 0 10px;
+ }
+
 .input-file-container {
     position: relative;
     width: 225px;
-    margin:0 0 20px;
   } 
    .input-file-trigger {
     display: block;
     padding: 14px 45px;
-    background: #2eb398;
-    color: #fff;
+    
+    background: #34495E;
+    color: #2eb398;
     font-size: 1em;
     transition: all .4s;
     cursor: pointer;
@@ -702,15 +728,16 @@ footer {
  .input-file:focus + .input-file-trigger,
    .input-file-trigger:hover,
    .input-file-trigger:focus {
-    background: #34495E;
-    color: #2eb398;
+    background: #2eb398;
+    color: #fff;
   }
   
   .file-return {
     margin: 0;
   }
   .file-return:not(:empty) {
-    margin: 1em 0;
+    color: #bebebe;
+    /* margin: 0.5em 0; */
   }
  .file-return {
     font-style: italic;
