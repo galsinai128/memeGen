@@ -8,8 +8,7 @@ function init() {
     renderOptionsForFilter();
     renderPopularKeysList();
 }
-{/* <div class="item-detalis flex space-around">
-<div>${img.keywords}</div> */}
+
 function renderImgs(imgs) {
     var elUlImgs = document.querySelector('.imgs-list');
     var strHtml = '';
@@ -27,12 +26,12 @@ function renderImgs(imgs) {
 }
 
 function openGen(elPic) {
+    gCurrLineIdx =0;
     var elModal = document.querySelector('.modal');
     document.querySelector('.hedaer-decoration').classList.add('hide');
     document.querySelector('main').classList.toggle('hide');
     document.querySelector('.about').classList.add('hide');
     document.querySelector('.about-item').classList.add('hide');
-    // document.querySelector('#contact').classList.add('hide');
     document.querySelector('.canvas-container').classList.add('open-list');
     document.querySelector('.color').value ="#ffffff" ;
 
@@ -54,7 +53,6 @@ function closeGen() {
     document.querySelector('main').classList.remove('hide');
     document.querySelector('.about').classList.remove('hide');
     document.querySelector('.about-item').classList.remove('hide');
-    // document.querySelector('#contact').classList.remove('hide');
     document.querySelector('.canvas-container').classList.remove('open-list');
 
 }
@@ -85,8 +83,7 @@ function filterImagesList(popularStr) {
         elFilter.value = '';
         return;
     }
-    // <div class="item-detalis flex space-around">
-    // <div>${gImgs[i].keywords}</div>
+
     for (var i = 0; i < gImgs.length; i++) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
@@ -197,3 +194,13 @@ function onFileInputChange(ev) {
 
 
 
+function toggleMenu(className){
+    var el = document.querySelector('.'+className);
+    if (className ==='align-menu'){
+     document.querySelector('.font-menu').classList.remove('display-block');
+    }
+    else {
+        document.querySelector('.align-menu').classList.remove('display-block');
+    }    
+    el.classList.toggle('display-block');
+}

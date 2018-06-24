@@ -8,18 +8,11 @@
     <link rel="shortcut icon" href="img/logo/icon.png" />
     <link rel="stylesheet" href="css/style.css" />
     <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-
-
-
     <title>MemeGen</title>
 </head>
 
 <body onload="init()">
-
-
-
     <header>
-
         <div class="logo">
         </div>
         <nav class="flex">
@@ -70,7 +63,7 @@
                     </ul>
                     <ul class="control-btns-list clean-list flex justify-content-center">
                         <li>
-                            <div class="font-container control-btn flex fa fa-font">
+                            <div onclick="toggleMenu('font-menu')" class="font-container control-btn flex fa fa-font">
                                 <ul class="font-menu clean-list">
                                     <li>
                                         <button onclick="setFont('Impact')" class="control-btn" style="font-family: Impact">Impact</button>
@@ -94,7 +87,8 @@
                             </div>
                         </li>
                         <li class="control-btn-item">
-                            <div class="control-btn align-container flex fa fa-align-center">
+                            <!--  -->
+                            <div onclick="toggleMenu('align-menu')" class="control-btn align-container flex fa fa-align-center">
                                 <ul class="align-menu clean-list">
                                     <li>
                                         <button onclick="setAlign('L')" class="control-btn fa fa-align-left"></button>
@@ -170,12 +164,10 @@
                 <input onchange="filterImagesList(this.value)" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
                 <datalist id="keywords"></datalist>
             </div>
-            <!-- <div class="filter-container flex flex-dir-col align-items-center"> -->
+
             <ul class="popular-searches clean-list flex space-around align-items-center">
             </ul>
-            <!-- <div class="hexagon hexagon2" onclick="openGen(this)"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div> -->
-            <!-- <input class="filter-search-submit" type="submit" value="search" onclick="filterImagesList()"> -->
-            <!-- </div> -->
+
         </div>
 
         <ul id="gallery" class="imgs-list clean-list">

@@ -118,7 +118,7 @@ function setKeyInMap(str){
 }
 
 function addImg(img) {
-    console.log(img);
+    
 
     gImgs.unshift(createImg('',img.src));
     renderImgs(gImgs);
