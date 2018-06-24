@@ -142,19 +142,18 @@ main {
 
 .modal {
     padding: 10px;
-    z-index: -2;
+    z-index: 2;
     background-color: #404040;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s;
-    position: fixed;
+    display: none;
+    /* transition: opacity 0.4s; */
+    /* position: absolute; */
     width: 100%;
 }
 
 .open-modal {
     opacity: 1;
-    visibility: visible;
-    z-index: 2;
+    display: block;
+
 }
 
 .canvas-container {
@@ -164,9 +163,14 @@ main {
 }
 
 .meme-img {
-    margin: 0 20px 0 0;
+    margin: 0;
     align-items: center;
     flex-direction: column;
+}
+
+.meme-box-control{
+    width: 100%;
+    max-width: 300px;
 }
 
 
@@ -302,6 +306,9 @@ main {
     .canvas-container {
         flex-direction: row;
         align-items: baseline;
+    }
+    .meme-img{
+        margin:  0 20px 0 0;
     }
 }
 

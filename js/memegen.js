@@ -32,7 +32,7 @@ function openGen(elPic) {
     document.querySelector('main').classList.toggle('hide');
     document.querySelector('.about').classList.add('hide');
     document.querySelector('.about-item').classList.add('hide');
-    document.querySelector('#contact').classList.add('hide');
+    // document.querySelector('#contact').classList.add('hide');
     document.querySelector('.canvas-container').classList.add('open-list');
     document.querySelector('.color').value ="#ffffff" ;
 
@@ -54,7 +54,7 @@ function closeGen() {
     document.querySelector('main').classList.remove('hide');
     document.querySelector('.about').classList.remove('hide');
     document.querySelector('.about-item').classList.remove('hide');
-    document.querySelector('#contact').classList.remove('hide');
+    // document.querySelector('#contact').classList.remove('hide');
     document.querySelector('.canvas-container').classList.remove('open-list');
 
 }

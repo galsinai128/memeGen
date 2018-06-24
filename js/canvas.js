@@ -120,11 +120,10 @@ function renderText(inputValue) {
         else ctx.font = `${currLine.size}px ${currLine.font}`;
 
         //SHADOW
-        if (currLine.isShadow) ctx.shadowBlur = 7;
-        else ctx.shadowBlur = 0;
+        if (currLine.isShadow)  ctx.strokeText(currLine.line, currLine.align, currLine.coorY);
 
         ctx.fillText(currLine.line, currLine.align, currLine.coorY);
-        ctx.strokeText(currLine.line, currLine.align, currLine.coorY);
+       
     }
 
 }
