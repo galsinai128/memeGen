@@ -157,7 +157,7 @@ main {
 .canvas-container {
     align-items: center;
     opacity: 0;
-    transition: opacity 0.6s;
+    transition: opacity 1s;
 }
 
 .meme-img {
@@ -667,38 +667,6 @@ path {
     opacity: 1;
 }
 
-.hexagon {
-    overflow: hidden;
-    visibility: hidden;
-    transform: rotate(120deg);
-    cursor: pointer;
-}
-
-.hexagon2 {
-    width: 200px;
-    height: 400px;
-    margin: -80px 0 0 20px;
-}
-
-.hexagon-in1 {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    transform: rotate(-60deg);
-}
-
-.hexagon-in2 {
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-image: url("../img/1.jpg");
-    visibility: visible;
-    transform: rotate(-60deg);
-    }
-.upload-file {
-    align-self: self-end;
-}
 
 footer {
     height: 40px;
@@ -706,3 +674,53 @@ footer {
     color: #454545;
     background-color: #222222;
 }
+
+/* upload input */
+.input-file-container {
+    position: relative;
+    width: 225px;
+    margin:0 0 20px;
+  } 
+   .input-file-trigger {
+    display: block;
+    padding: 14px 45px;
+    background: #2eb398;
+    color: #fff;
+    font-size: 1em;
+    transition: all .4s;
+    cursor: pointer;
+  }
+   .input-file {
+    position: absolute;
+    top: 0; left: 0;
+    width: 225px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+  }
+   .input-file:hover + .input-file-trigger,
+ .input-file:focus + .input-file-trigger,
+   .input-file-trigger:hover,
+   .input-file-trigger:focus {
+    background: #34495E;
+    color: #2eb398;
+  }
+  
+  .file-return {
+    margin: 0;
+  }
+  .file-return:not(:empty) {
+    margin: 1em 0;
+  }
+ .file-return {
+    font-style: italic;
+    font-size: .9em;
+    font-weight: bold;
+  }
+  .file-return:not(:empty):before {
+    content: "Selected file: ";
+    font-style: normal;
+    font-weight: normal;
+  }
+  
+  

@@ -35,7 +35,8 @@ function openGen(elPic) {
     elModal.classList.add('open-modal');
     toggleActive();
 
-    var imgObj = findImg(elPic);
+    var imgObj = findImg(elPic,null);
+
     createMeme(imgObj.id);
     drawImg(elPic);
 }
@@ -181,4 +182,9 @@ function OnMessageSubmitted() {
     var subjectStr = document.querySelector('.subject-massage-submition').value;
     var bodyStr = document.querySelector('.body-massage-submition').value;
     window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=hexalcrop@gmail.com&su=${subjectStr}&body=${bodyStr}`);
+}
+
+
+function onFileInputChange(ev) {
+    handleImageFromInput(ev, addImg)
 }

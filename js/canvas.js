@@ -327,7 +327,8 @@ function toggleShadow(el){
 
 function downloadImg(elLink) {
     var currImgId = gMeme.selectedImgid;
-    elLink.download = `img/${currImgId}.jpg`;
+    var currImg = findImg('',currImgId);
+    elLink.download = `img/${currImg.url}.jpg`;
     var imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent;
 }
