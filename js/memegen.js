@@ -8,15 +8,14 @@ function init() {
     renderOptionsForFilter();
     renderPopularKeysList();
 }
-
+{/* <div class="item-detalis flex space-around">
+<div>${img.keywords}</div> */}
 function renderImgs(imgs) {
     var elUlImgs = document.querySelector('.imgs-list');
     var strHtml = '';
     imgs.forEach(function (img) {
         strHtml += `<li><div class="list-item-container">
-        <div class="item-detalis flex space-around">
-        <div>${img.keywords}</div>
-        </div><img id="${img.url}" 
+     <img id="${img.url}" 
         class="galery-img" src="${img.url}" onclick="openGen(this)"
          alt="No Pciture to displaye"></div></li>`
     });
@@ -30,13 +29,15 @@ function openGen(elPic) {
     document.querySelector('main').classList.toggle('hide');
     document.querySelector('.about').classList.add('hide');
     document.querySelector('.about-item').classList.add('hide');
+    document.querySelector('#contact').classList.add('hide');
     document.querySelector('.canvas-container').classList.add('open-list');
 
 
     elModal.classList.add('open-modal');
     toggleActive();
 
-    var imgObj = findImg(elPic);
+    var imgObj = findImg(elPic,null);
+
     createMeme(imgObj.id);
     drawImg(elPic);
 }
@@ -49,6 +50,7 @@ function closeGen() {
     document.querySelector('main').classList.remove('hide');
     document.querySelector('.about').classList.remove('hide');
     document.querySelector('.about-item').classList.remove('hide');
+    document.querySelector('#contact').classList.remove('hide');
     document.querySelector('.canvas-container').classList.remove('open-list');
 
 }
@@ -79,15 +81,14 @@ function filterImagesList(popularStr) {
         elFilter.value = '';
         return;
     }
- 
+    // <div class="item-detalis flex space-around">
+    // <div>${gImgs[i].keywords}</div>
     for (var i = 0; i < gImgs.length; i++) {
         for (var j = 0; j < gImgs[i].keywords.length; j++) {
             var keyword = gImgs[i].keywords[j];
             if (filter === keyword) {
                 strHtml += `<li><div class="list-item-container">
-                <div class="item-detalis flex space-around">
-                <div>${gImgs[i].keywords}</div>
-                </div><img id="${gImgs[i].url}" 
+              <img id="${gImgs[i].url}" 
                 class="galery-img" src="${gImgs[i].url}" onclick="openGen(this)"
                  alt="No Pciture to displaye"></div></li>`
             }
@@ -184,3 +185,11 @@ function OnMessageSubmitted() {
     var bodyStr = document.querySelector('.body-massage-submition').value;
     window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=hexalcrop@gmail.com&su=${subjectStr}&body=${bodyStr}`);
 }
+
+
+function onFileInputChange(ev) {
+    handleImageFromInput(ev, addImg)
+}
+
+
+

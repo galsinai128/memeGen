@@ -4,6 +4,7 @@ var gImageId = 0;
 var gMeme = {};
 var gKeywordMap = {};
 var gPopularKeywordMap = {};
+var IMGS_KEY = 'imgs'
 
 
 
@@ -12,16 +13,21 @@ function initImgs(){
     mapImagesKeyWords();
 }
 
-function createImg(keywords){
+function createImg(keywords,url){
     return {
         id : ++gImageId,
-        url : `img/${gImageId}.jpg`,
+        url : url ?url:`img/${gImageId}.jpg`,
         keywords : keywords 
     }
 }
 
 function createImgs(){
-    var imgs = [
+    var imgs = [];
+
+    imgs = loadFromStorage(IMGS_KEY);
+    
+    if (!imgs || imgs.length === 0) {
+     imgs = [
         createImg(['happy','vication','nature']),
         createImg(['angry','bad','right']),
         createImg(['love','girlfriend','animals','friends']),
@@ -48,6 +54,10 @@ function createImgs(){
         createImg(['happy','bad','sad']),
         createImg(['freind','funny','toys']),
     ];
+} else {
+    
+    gImageId = imgs.length;
+}
 
     return imgs;
 }
@@ -76,9 +86,14 @@ function createMemeProp(posY) {
     }
 }
 
-function findImg(img) {
+function findImg(img,imgId) {
  var objImg = gImgs.find(function(item){
+     if(!imgId) {
         return (item.url === img.id)
+     } else {
+        return (item.id === imgId)
+     }
+       
     });
     return objImg;
 }
@@ -101,6 +116,17 @@ function setKeyInMap(str){
     gPopularKeywordMap[str] =  gPopularKeywordMap[str] + 1;;
     
 }
+
+function addImg(img) {
+    console.log(img);
+
+    gImgs.unshift(createImg('',img.src));
+    renderImgs(gImgs);
+    saveToStorage(IMGS_KEY,gImgs)
+}
+
+
+
 
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))

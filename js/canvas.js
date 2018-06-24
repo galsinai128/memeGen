@@ -40,12 +40,13 @@ function drawImg(imgUrl) {
 
     if (!currImg || currImg !== imgUrl) {
         currImg = imgUrl;
-        var img = new Image()
+        var img = new Image();
         img.src = imgUrl.src;
         canvas.width = img.width;
         canvas.height = img.height;
         gBottomTbY = (canvas.height - 50) - 10;
         gBottomTbX = canvas.width - 20;
+        img.crossOrigin="Anonymous"; 
         img.onload = function () {
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                 // var sourceX = 150;
@@ -59,7 +60,6 @@ function drawImg(imgUrl) {
                 // ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
               };
 
-        
     } else {
         ctx.drawImage(currImg, 0, 0, canvas.width, canvas.height);
     }
@@ -327,7 +327,8 @@ function toggleShadow(el){
 
 function downloadImg(elLink) {
     var currImgId = gMeme.selectedImgid;
-    elLink.download = `img/${currImgId}.jpg`;
+    var currImg = findImg('',currImgId);
+    elLink.download = `img/${currImg.url}.jpg`;
     var imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent;
 }

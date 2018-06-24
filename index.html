@@ -8,8 +8,7 @@
     <link rel="shortcut icon" href="img/logo/icon.png" />
     <link rel="stylesheet" href="css/style.css" />
     <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-
-
+    
 
 
     <title>MemeGen</title>
@@ -66,7 +65,7 @@
                             <div class="control-btn flex  fa fa-plus" onclick="enlargeText()"></div>
                         </li>
                         <li class="control-btn-item">
-                            <input class="control-btn" oninput="colorChange(this)" type="color" id="txtColor">
+                            <input class="control-btn" value="#ffffff" oninput="colorChange(this)" type="color" id="txtColor">
                         </li>
                     </ul>
                     <ul class="control-btns-list clean-list flex justify-content-center">
@@ -141,12 +140,30 @@
                         </a>
                     </div>
                 </div>
+                <div class="flex space-around">
+
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="social-share-btn" type="submit">Publish</button>
+                    </form>
+                    <div id="fb-root"></div>
+                    <div class="share-container"></div>
+                </div>
             </div>
         </div>
     </div>
 
 
     <main id="top" class="flex flex-dir-col justify-content-center align-items-center">
+        <form action="#">
+            <div class="input-file-container">
+                <input class="input-file" type="file" name="image" onchange="onFileInputChange(event)" />
+                <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
+            </div>
+            <p class="file-return"></p>
+        </form>
+        <div class="share-container"></div>
+
         <div class="filter-container flex flex-dir-col align-items-center">
             <input onchange="filterImagesList(this.value)" class="filter-search" type="text" placeholder="filter by keywords" list="keywords">
             <datalist id="keywords"></datalist>
@@ -226,6 +243,7 @@
     </footer>
 
     <script src="js/utils-service.js"></script>
+    <script src="js/upload-service.js"></script>
     <script src="js/memegen-service.js"></script>
     <script src="js/memegen.js"></script>
     <script src="js/canvas.js"></script>
