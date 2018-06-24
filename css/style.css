@@ -1,7 +1,9 @@
-* {
+
+ @import url("hex.css");
+
+ * {
     box-sizing: border-box;
 }
-
 @font-face {
     font-family: lato;
     src: url("../fonts/Lato-Regular.ttf");
@@ -754,3 +756,10 @@ footer {
     font-size: 14px;
   }
 
+
+    
+
+
+
+
+ 
